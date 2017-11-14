@@ -1,8 +1,8 @@
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-var HeroSchema = new Schema({
+const HeroSchema = new Schema({
   name: {
     type: String
   },
@@ -32,6 +32,6 @@ var HeroSchema = new Schema({
   }
 });
 
-var Hero = mongoose.model("Hero", HeroSchema);
+const Hero = mongoose.model("Hero", HeroSchema);
 
 module.exports = Hero;

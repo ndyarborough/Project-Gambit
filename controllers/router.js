@@ -6,12 +6,12 @@ const cheerio = require("cheerio");
 const request = require('request');
 
 // get route -> index
-router.get("/", function(req, res) {
+router.get("/", (req, res) => {
   res.send("Overwatch Home Page!");
 });
 
  // Scrapes Overbuff for userstats when this route is hit
- router.get('/scrape', function(req, res) {
+ router.get('/scrape', (req, res) => {
     request('https://www.overbuff.com/players/xbl/Roadhogs%20Hooks', function(err, response, html) {
         const $ = cheerio.load(html);
 
@@ -22,7 +22,7 @@ router.get("/", function(req, res) {
         })
 
         // Scrape Stats for each hero
-        $('div.player-hero').each(function(i, element) {
+        $('div.player-hero').each((i, element) => {
             // mongoResults.name = $(this).children('div.grouping').children('div.group').children('div.name').children('a').text();
             // mongoResults.wins = $(this).children('div.grouping').children('div.special').children('div:nth-child(3)').children('div.value').children('span').text();
             // mongoResults.eliminations = $(this).children('div:nth-child(3)').children('div.normal').children('div:nth-child(1)').children('div.value').text();
