@@ -1,0 +1,26 @@
+{
+  "name": "project-gambit",
+  "version": "1.0.0",
+  "description": "Overwatch J",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ndyarborough/Project-Gambit.git"
+  },
+  "author": "Noah Yarborough, Julian Bridges, Seraj Medhat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ndyarborough/Project-Gambit/issues"
+  },
+  "homepage": "https://github.com/ndyarborough/Project-Gambit#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cheerio": "^1.0.0-rc.2",
+    "logger": "^0.0.1",
+    "mongoose": "^4.13.2"
+  }
+}
