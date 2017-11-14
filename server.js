@@ -1,16 +1,16 @@
 // Dependencies
-var express = require("express");
-var mongoose = require("mongoose");
-var request = require("request");
-var bodyParser = require("body-parser");
+const express = require("express");
+const mongoose = require("mongoose");
+const request = require("request");
+const bodyParser = require("body-parser");
 
 // Initialize Express
-var app = express();
-var PORT = process.env.PORT || 3000;
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 // Import Models
-var Hero = require('./models/hero.js');
-var User = require('./models/user.js');
+const Hero = require('./models/hero.js');
+const User = require('./models/user.js');
 
 // Routes
 const routes = require("./controllers/router.js");
@@ -21,14 +21,14 @@ mongoose.Promise = Promise;
 //Database configuration with mongoose
 mongoose.connect("mongodb://localhost/projectgambit");
 //mongoose.connect("mongodb://heroku_k839gv0t:hk62n62cdea3vpj3bq3bhl3o57@ds143245.mlab.com:43245/heroku_k839gv0t");
-var db = mongoose.connection;
+const db = mongoose.connection;
 
-db.on("error", function(error) {
+db.on("error", (error) => {
   console.log("Database Error:", error);
 });
 
 // Once logged in to the db through mongoose, log a success message
-db.once("open", function() {
+db.once("open", () => {
   console.log("Mongoose connection successful.");
 });
 
@@ -40,6 +40,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 // Listen on port 3000
-app.listen(PORT, function() {
+app.listen(PORT, () => {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
 });

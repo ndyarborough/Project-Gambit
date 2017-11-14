@@ -1,8 +1,8 @@
 // Dependencies
 //===============================
-var express = require("express");
-var router = express.Router();
-var cheerio = require("cheerio");
+const express = require("express");
+const router = express.Router();
+const cheerio = require("cheerio");
 const request = require('request');
 
 // get route -> index
@@ -13,9 +13,9 @@ router.get("/", function(req, res) {
  // Scrapes Overbuff for userstats when this route is hit
  router.get('/scrape', function(req, res) {
     request('https://www.overbuff.com/players/xbl/Roadhogs%20Hooks', function(err, response, html) {
-        var $ = cheerio.load(html);
+        const $ = cheerio.load(html);
 
-        var mongoResults = {};
+        const mongoResults = {};
         // Scrape Lifetime Stats
         $('div.four').each((i, element) => {
             mongoResults.wins = $(this).children().last().children().first().children('tbody:nth-child(1)').children('tr:nth-child(1)').children('td:nth-child(2)').text();
@@ -31,7 +31,7 @@ router.get("/", function(req, res) {
             // mongoResults.objkill = $(this).children('div:nth-child(3)').children('div.normal').children('div:nth-child(2)').children('div.value').text();
             // mongoResults.objtime = $(this).children('div:nth-child(3)').children('div.normal').children('div:nth-child(3)').children('div.value').text();
 
-            // var entry = new Article(mongoResults);
+            // const entry = new Article(mongoResults);
             
             // entry.save(function(err, doc) {
             // 	if (err) {
