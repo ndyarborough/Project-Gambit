@@ -1,48 +1,55 @@
 // Dependencies
 //===============================
-const express = require("express");
-const router = express.Router();
+const router = require('express').Router();
 const cheerio = require("cheerio");
 const request = require('request');
 
-// get route -> index
-router.get("/", (req, res) => {
-  res.send("Overwatch Home Page!");
-});
+// - fetch a profile
+//     - it'll either be the ranked view or quick
+//     - you can figure out which view by checking that toggle button, which one has is-active
+// - if youre in ranked view, you're done. scrape the page for your stats
+// - if youre in quick view,
+//     - post to /profile/mode/toggle route with { mode: 'ranked' }
+//     - refresh/refetch the profile page and itll be in ranked mode
 
  // Scrapes Overbuff for userstats when this route is hit
  router.get('/scrape', (req, res) => {
-    request('https://www.overbuff.com/players/xbl/Roadhogs%20Hooks', function(err, response, html) {
+    request('https://masteroverwatch.com/profile/pc/eu/eerpS-2719', function(err, response, html) {
         const $ = cheerio.load(html);
 
         const mongoResults = {};
+        const heroes = [];
+        const lifetimeStats = $('div.data-overall').children('div:nth-child(2)');
+        
         // Scrape Lifetime Stats
-        $('div.four').each((i, element) => {
-            mongoResults.wins = $(this).children().last().children().first().children('tbody:nth-child(1)').children('tr:nth-child(1)').children('td:nth-child(2)').text();
-        })
+        mongoResults.gamesPlayed = lifetimeStats.children('div:nth-child(2)').children('div:nth-child(1)').children('div:nth-child(2)').children().first().text();
+        mongoResults.wins = lifetimeStats.children('div:nth-child(2)').children('div:nth-child(2)').children('div:nth-child(2)').children().first().text();
+        mongoResults.eliminations = lifetimeStats.children('div:nth-child(4)').children('div:nth-child(1)').children('div:nth-child(2)').children().first().text();
+        mongoResults.deaths = lifetimeStats.children('div:nth-child(4)').children('div:nth-child(2)').children('div:nth-child(2)').children().first().text();
+        mongoResults.kdr = lifetimeStats.children('div:nth-child(4)').children('div:nth-child(3)').children('div:nth-child(2)').children().first().text();
+        mongoResults.accuracy = lifetimeStats.children('div:nth-child(4)').children('div:nth-child(4)').children('div:nth-child(2)').children().first().text();
+        mongoResults.damage = lifetimeStats.children('div:nth-child(4)').children('div:nth-child(5)').children('div:nth-child(2)').children().first().text();
+        mongoResults.healing = lifetimeStats.children('div:nth-child(4)').children('div:nth-child(7)').children('div:nth-child(2)').children().first().text();
 
         // Scrape Stats for each hero
-        $('div.player-hero').each((i, element) => {
-            // mongoResults.name = $(this).children('div.grouping').children('div.group').children('div.name').children('a').text();
-            // mongoResults.wins = $(this).children('div.grouping').children('div.special').children('div:nth-child(3)').children('div.value').children('span').text();
-            // mongoResults.eliminations = $(this).children('div:nth-child(3)').children('div.normal').children('div:nth-child(1)').children('div.value').text();
-            // mongoResults.deaths = $(this).children('div:nth-child(3)').children('div.normal').children('div:nth-child(5)').children('div.value').text();
-            // mongoResults.damage = $(this).children('div:nth-child(3)').children('div.normal').children('div:nth-child(4)').children('div.value').text();
-            // mongoResults.objkill = $(this).children('div:nth-child(3)').children('div.normal').children('div:nth-child(2)').children('div.value').text();
-            // mongoResults.objtime = $(this).children('div:nth-child(3)').children('div.normal').children('div:nth-child(3)').children('div.value').text();
+        $('div.card-container').each((i, element) => {
+          const heroResults = {};
+          heroResults.name = $(element).children('div:nth-child(1)').children('div:nth-child(1)').children('div:nth-child(1)').children('div:nth-child(2)').children().first().text();
+          heroResults.wins = parseFloat($(element).children('div:nth-child(1)').children('div:nth-child(2)').children('div:nth-child(1)').children('div:nth-child(3)').children('strong:nth-child(1)').children('span:nth-child(1)').text());
+          heroResults.hoursPlayed = $(element).children('div:nth-child(1)').children('div:nth-child(2)').children('div:nth-child(1)').children('div:nth-child(1)').children('span:nth-child(1)').text();
+          heroResults.eliminations = parseFloat($(element).children('div:nth-child(2)').children('div:nth-child(1)').children('div:nth-child(1)').children('div:nth-child(1)').text().replace('/min', ''));
+          heroResults.kdr = parseFloat($(element).children('div:nth-child(2)').children('div:nth-child(2)').children('div:nth-child(1)').children('div:nth-child(1)').text());
+          heroResults.accuracy = parseFloat($(element).children('div:nth-child(2)').children('div:nth-child(3)').children('div:nth-child(1)').children('div:nth-child(1)').text().replace('%', ''));
+          heroResults.healing = parseFloat($(element).children('div:nth-child(2)').children('div:nth-child(5)').children('div:nth-child(1)').children('div:nth-child(1)').text().replace('/min', ''));
+          heroResults.damage = parseFloat($(element).children('div:nth-child(3)').children('div:nth-child(1)').children('div:nth-child(1)').children('div:nth-child(1)').text().replace('/min', ''));
+          heroResults.objKills = parseFloat($(element).children('div:nth-child(3)').children('div:nth-child(2)').children('div:nth-child(1)').children('div:nth-child(1)').text().replace('/min', ''));
+          heroResults.objTime = parseFloat($(element).children('div:nth-child(3)').children('div:nth-child(3)').children('div:nth-child(1)').children('div:nth-child(1)').text().replace(' seconds', ''));
 
-            // const entry = new Article(mongoResults);
-            
-            // entry.save(function(err, doc) {
-            // 	if (err) {
-            // 		console.log(err);
-            // 	}else {
-            // 	}
-            // });
+          heroes.push(heroResults);
         });
-        console.log(mongoResults);
+        console.log(heroes);
     });
     res.send('scraped');
-});	
+});
 
 module.exports = router;

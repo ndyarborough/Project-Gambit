@@ -19,8 +19,10 @@
   "homepage": "https://github.com/ndyarborough/Project-Gambit#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "bootstrap": "^4.0.0-beta",
     "cheerio": "^1.0.0-rc.2",
     "logger": "^0.0.1",
-    "mongoose": "^4.13.2"
+    "mongoose": "^4.13.2",
+    "reactstrap": "^4.8.0"
   }
 }
