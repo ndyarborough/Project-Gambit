@@ -15,7 +15,7 @@ const Login = () => {
                         </div>
                         <div className="panel-body">
 
-                            <form role="form">
+                            <form>
                                 <div className="form-group">
                                     <label for="exampleInputEmail1">Username or Email</label>
                                     <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Enter email" />
