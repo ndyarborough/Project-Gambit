@@ -31,7 +31,7 @@ class Register extends React.Component {
         event.preventDefault();
         if (this.state.email && this.state.password && this.state.confirmPassword && this.state.platform && this.state.region && this.state.gamertag) {
             // Get UserStats
-            this.getUserStats.scrapeWebsite(this.state.platform, this.state.region, this.state.value);
+            this.getUserStats.register(this.state.platform, this.state.region, this.state.gamertag, this.state.email, this.state.password, this.state.confirmPassword);
             console.log(this.getUserStats);
         } else {
             console.log('Please fill out entire form!')
@@ -39,7 +39,6 @@ class Register extends React.Component {
     };
 
     render() {
-        console.log('render');
         return (
             <form className="form-horizontal">
                 <div className="row">
@@ -136,7 +135,9 @@ class Register extends React.Component {
                             <select
                                 name='platform'
                                 onChange={this.handleInputChange}
+                                value={this.state.platform}
                                 select='false'
+                                id='platformSelect'
                                 className="form-control"
                             >
                                 <option>XBOX</option>
@@ -154,7 +155,9 @@ class Register extends React.Component {
                             <select
                                 name='region'
                                 onChange={this.handleInputChange}
+                                value={this.state.region}
                                 select='false'
+                                id='regionSelect'
                                 className="form-control" >
                                 <option>CN</option>
                                 <option>EU</option>
@@ -168,7 +171,7 @@ class Register extends React.Component {
 
                 <div className="row justify-content-center">
                     <div className="col-md-6">
-                        <button onSubmit={this.handleFormSubmit} type="submit" className="btn btn-primary register-button"><i className="fa fa-user-plus"></i> Register</button>
+                        <button onClick={this.handleFormSubmit} type="submit" className="btn btn-primary register-button"><i className="fa fa-user-plus"></i> Register</button>
                     </div>
                 </div>
             </form>

@@ -1,9 +1,8 @@
-const mongoose = require("mongoose");
+var mongoose = require("mongoose");
 
-const Schema = mongoose.Schema;
+var Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
-
+var UserSchema = new Schema({
   email: {
     type: String,
     required: true
@@ -19,17 +18,60 @@ const UserSchema = new Schema({
     required: true
   },
 
-  gamertag: {
+  region: {
     type: String,
     required: true
   },
+  
+  gamerTag: {
+    type: String,
+    required: true
+  },
+
+  gamesPlayed: {
+    type: Number
+  },
+
+  accuracy: {
+    type: Number
+  },
+
+  healing: {
+    type: Number
+  },
+
+  damage: {
+    type: Number
+  },
+
+  wins: {
+    type: Number
+  },
+
+  eliminations: {
+    type: Number
+  },
+
+  deaths: {
+    type: Number
+  },
+
+  kdr: {
+    type: Number
+  },
   // This only saves one note's ObjectId, ref refers to the Note model
-  note: {
+  hero: {
     type: Schema.Types.ObjectId,
-    ref: "Note"
+    ref: "Hero"
+  },
+
+  // This is for the rooms that a player joins
+  room: {
+    type: Schema.Types.ObjectId,
+    ref: "Room"
   }
 });
 
-const User = mongoose.model("User", UserSchema);
+var User = mongoose.model("User", UserSchema);
 
 module.exports = User;

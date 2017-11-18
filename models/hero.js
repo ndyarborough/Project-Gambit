@@ -1,34 +1,8 @@
-const mongoose = require("mongoose");
+var mongoose = require("mongoose");
 
-const Schema = mongoose.Schema;
+var Schema = mongoose.Schema;
 
-// Hero Stats
-//     {
-//         "character": ,
-//         "eliminations": ,
-//         "deaths": , 
-//         "accuracy": ,
-//         "healing": ,
-//         "playTime": ,
-//         "K/DRatio": ,
-//         "wins": ,
-//         "damage": ,
-//         "objKills": ,
-//         "objTime": ,
-//     }
-
-// Overall Stats
-//     {
-//         "wins": ,
-//         "gamesPlayed": ,
-//         "eliminations": ,
-//         "deaths": ,
-//         "K/DRatio": ,
-//         "damage": ,
-//         "healing": ,
-//     }
-
-const HeroSchema = new Schema({
+var HeroSchema = new Schema({
   name: {
     type: String
   },
@@ -37,7 +11,15 @@ const HeroSchema = new Schema({
     type: Number
   },
 
-  deaths: {
+  hoursPlayed: {
+    type: Number
+  },
+
+  kdr: {
+    type: Number
+  },
+
+  accuracy: {
     type: Number
   },
 
@@ -45,19 +27,23 @@ const HeroSchema = new Schema({
     type: Number
   },
 
+  healing: {
+    type: Number
+  },
+
   damage: {
     type: Number
   },
 
-  objkills: {
+  objKills: {
     type: Number
   },
 
-  objtime: {
+  objTime: {
     type: Number
   }
 });
 
-const Hero = mongoose.model("Hero", HeroSchema);
+var Hero = mongoose.model("Hero", HeroSchema);
 
 module.exports = Hero;
