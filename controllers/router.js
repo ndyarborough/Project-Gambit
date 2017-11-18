@@ -71,4 +71,8 @@ const request = require('request');
     res.send('scraped');
 });
 
+router.post('/addUser', (req, res) => {
+  
+})
+
 module.exports = router;
