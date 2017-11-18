@@ -1,0 +1,15 @@
+.loginBox  { /* Class for Row */
+    border: 2px solid black;
+    height: 40vh;
+    background: blue;
+}
+
+img {
+    margin: 8vh 0 0;
+    width: 175px
+}
+
+.col-md-8 {
+    max-height: 100%; /* Ensures columns do not stretch past row*/
+    background: red;
+}
