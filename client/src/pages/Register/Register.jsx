@@ -31,7 +31,7 @@ class Register extends React.Component {
         event.preventDefault();
         if (this.state.email && this.state.password && this.state.confirmPassword && this.state.platform && this.state.region && this.state.gamertag) {
             // Get UserStats
-            this.getUserStats.register(this.state.platform, this.state.region, this.state.gamertag, this.state.email, this.state.password, this.state.confirmPassword);
+            this.getUserStats.scrapeWebsite(this.state.platform, this.state.region, this.state.gamertag, this.state.email, this.state.password, this.state.confirmPassword);
             console.log(this.getUserStats);
         } else {
             console.log('Please fill out entire form!')
@@ -161,7 +161,7 @@ class Register extends React.Component {
                                 className="form-control" >
                                 <option>CN</option>
                                 <option>EU</option>
-                                <option>GBL</option>
+                                <option>GLOBAL</option>
                                 <option>KR</option>
                                 <option>US</option>
                             </select>
