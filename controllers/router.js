@@ -37,10 +37,10 @@ router.route('/register').post(function(req, res) {
 router.route('/login/:email/:password').get(function(req, res) {
   console.log(req.params)
   User.findOne({
-    'email': req.body.email
-  }).then(function(err, doc) {
+    'email': req.params.email
+  }).exec(function(err, doc) {
     console.log(doc);
-    request(`https://masteroverwatch.com/profile/${doc.platform}/${doc.region}/${doc.gamertag}`, function(err, response, html) {
+    request(`https://masteroverwatch.com/profile/${doc.platform}/${doc.region}/${doc.gamerTag}`, function(err, response, html) {
       const $ = cheerio.load(html);
 
       function replaceNan(data) {

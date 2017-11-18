@@ -1,5 +1,8 @@
 import React from 'react';
 import { Container, Col, Row } from 'reactstrap';
+import GetUserStats from '../../components/api-routes'
+
+
 
 class RegisterForm extends React.Component {
     constructor(props) {
@@ -12,12 +15,18 @@ class RegisterForm extends React.Component {
             region: '',
             gamertag: '',
         };
+
+        this.getUserStats = new GetUserStats();
     }
 
-
-    handleSubmit = (event) => {
+    // Register User
+    handleFormSubmit = (event) => {
         event.preventDefault();
-        console.log(document.getElementById('exampleInputEmail1').value)
+        if (this.state.email && this.state.password && this.state.confirmPassword && this.state.platform && this.state.region && this.state.gamertag) {
+            this.getUserStats.scrapeWebsite(this.state.platform, this.state.region, this.state.gamertag, this.state.email, this.state.password, this.state.confirmPassword);
+        }else {
+            console.log('Please fill out entire form!');
+        }
     }
     // Handles updating component state when the user types into the input field
     handleInputChange = event => {
@@ -96,7 +105,7 @@ class RegisterForm extends React.Component {
                                     className="form-control" >
                                     <option>CN</option>
                                     <option>EU</option>
-                                    <option>GBL</option>
+                                    <option>GLOBAL</option>
                                     <option>KR</option>
                                     <option>US</option>
                                 </select>
