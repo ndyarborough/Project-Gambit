@@ -1,7 +1,35 @@
+.container-fluid {
+    height: 94.3vh;
+    background-color:#111;
+}
+
 .form-horizontal {
-    padding: 10vh 20vw;
+    padding: 5vh 0;
+    color: #eee;
+}
+
+.form-horizontal label {
+    padding: 0.5vh 0;
+    margin: 0;
 }
 
 .register-button {
     margin: 0;
+}
+
+.form-horizontal input {
+    background: transparent;
+}
+
+.form-horizontal input:focus {
+    background: transparent;
+    color: #eee;
+}
+
+.form-horizontal select {
+    background: transparent;
+}
+
+.form-horizontal select:focus {
+    background: transparent;
 }

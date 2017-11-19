@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Col, Row } from 'reactstrap';
-import GetUserStats from '../../components/api-routes'
+import GetUserStats from '../../components/api-routes';
+import './RegisterForm.css';
 
 
 
