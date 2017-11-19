@@ -1,7 +1,16 @@
 .navbar {
-    background-color: #aaa;
+    background-color: #43484c;
 }
 
 .nav-item {
-    padding: 8px    
+    padding: 8px;
+}
+
+.navbar-brand {
+    color: #f99e1a;
+}
+
+.nav-item a { 
+    color: #218ffe;   
+    
 }
