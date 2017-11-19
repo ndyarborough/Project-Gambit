@@ -109,6 +109,7 @@ class RegisterForm extends React.Component {
                                     <option>KR</option>
                                     <option>US</option>
                                 </select>
+                                <br />
                                 <button onClick={this.handleFormSubmit} type="submit" className="btn btn-primary register-button"><i className="fa fa-user-plus"></i> Register</button>
                             </form>
                         </Col>
