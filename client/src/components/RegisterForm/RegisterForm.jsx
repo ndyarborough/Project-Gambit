@@ -74,7 +74,7 @@ class RegisterForm extends React.Component {
                                     id="password-confirm"
                                     placeholder="Confirm Password"
                                     required />
-                                <label htmlFor="name">Gamertag</label>
+                                <label htmlFor="name">Gamertag (case sensitive)</label>
                                 <input
                                     name='gamertag'
                                     onChange={this.handleInputChange}
@@ -96,7 +96,7 @@ class RegisterForm extends React.Component {
                                     <option>PSN</option>
                                     <option>PC</option>
                                 </select>
-                                <label htmlFor="Region">Region</label>
+                                <label htmlFor="Region">Region (PS4 and XBOX - Region: Global)</label>
                                 <select
                                     name='region'
                                     onChange={this.handleInputChange}

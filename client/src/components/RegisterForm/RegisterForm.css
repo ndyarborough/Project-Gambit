@@ -1,6 +1,6 @@
-.container-fluid {
+#register .container-fluid {
     height: 94.3vh;
-    background-color:#111;
+    background-color:#444;
 }
 
 .form-horizontal {
@@ -19,6 +19,7 @@
 
 .form-horizontal input {
     background: transparent;
+    color: #eee;
 }
 
 .form-horizontal input:focus {
@@ -28,8 +29,14 @@
 
 .form-horizontal select {
     background: transparent;
+    color: rgb(138, 138, 138);
 }
 
 .form-horizontal select:focus {
     background: transparent;
+    color: rgb(138, 138, 138);
+}
+
+.form-horizontal select:focus option{ 
+    color: #444;
 }

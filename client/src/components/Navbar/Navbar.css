@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #43484c;
+    background-color: 	#000;
 }
 
 .nav-item {
@@ -8,9 +8,13 @@
 
 .navbar-brand {
     color: #f99e1a;
+    font-family: overwatch;
+    font-size: 2rem !important;
 }
 
 .nav-item a { 
-    color: #218ffe;   
+    color: #218ffe;
+    font-family: overwatch;
+    font-size: 1.5rem;
     
 }
