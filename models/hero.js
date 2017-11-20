@@ -12,7 +12,7 @@ var HeroSchema = new Schema({
   },
 
   hoursPlayed: {
-    type: Number
+    type: String
   },
 
   kdr: {
@@ -41,6 +41,12 @@ var HeroSchema = new Schema({
 
   objTime: {
     type: Number
+  },
+
+  // This only saves one note's ObjectId, ref refers to the Note model
+  User: {
+    type: Schema.Types.ObjectId,
+    ref: "User"
   }
 });
 

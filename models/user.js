@@ -60,17 +60,6 @@ var UserSchema = new Schema({
 
   kdr: {
     type: Number
-  },
-  // This only saves one note's ObjectId, ref refers to the Note model
-  hero: {
-    type: Schema.Types.ObjectId,
-    ref: "Hero"
-  },
-
-  // This is for the rooms that a player joins
-  room: {
-    type: Schema.Types.ObjectId,
-    ref: "Room"
   }
 });
 
