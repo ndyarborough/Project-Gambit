@@ -1,5 +1,8 @@
 #login .container-fluid {
-    padding-top: 7vh;
+    padding-top: 20vh;
+    height: 92.5vh;
+    background: url('../../imgs/discord_bg.jpg');
+    background-size: cover;     
 }
 
 .loginBox  { /* Class for Row */
@@ -12,12 +15,36 @@ img {
     width: 100%;
 }
 
+.loginBox .col-md-4 {
+    padding: 0;
+    background: #fff; 
+}   
+
 .loginBox .col-md-8 {
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) );    
     border-left: solid 1px black;
     padding-top: 5vh;
     max-height: 100%; /* Ensures columns do not stretch past row*/
 }
 
+.loginBox label {
+    color: #fff;
+    font-size: 2rem;
+}
+    
+
 .loginBox input {
     margin-bottom: 2vh;
+    background: transparent;
+    color: #eee;
+}
+
+.loginBox input:focus {
+    background: transparent;
+    color: #eee;    
+}
+
+.btn-sm {
+    margin: 2vh 10vw;
+    padding: 0.5vh 4vw !important;
 }

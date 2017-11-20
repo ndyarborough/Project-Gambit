@@ -1,11 +1,15 @@
 #register .container-fluid {
-    height: 94.3vh;
-    background-color:#444;
+    height: 92.5vh;
+    background: url('../../imgs/overwatch-bright.jpg');
+    background-size: cover;     
 }
 
 .form-horizontal {
-    padding: 5vh 0;
+    margin-top: 7vh;
+    padding: 5vh 3vw;
     color: #eee;
+    background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) );    
+    border: black 1px solid;    
 }
 
 .form-horizontal label {
@@ -27,16 +31,17 @@
     color: #eee;
 }
 
-.form-horizontal select {
-    background: transparent;
-    color: rgb(138, 138, 138);
-}
-
-.form-horizontal select:focus {
+/* Input Font */
+.form-horizontal select, .form-horizontal select:focus {
     background: transparent;
     color: rgb(138, 138, 138);
 }
 
 .form-horizontal select:focus option{ 
     color: #444;
+}
+
+.register-button {
+    padding: 0.5vh 8vw !important;
+    margin: 0 10vw;
 }
