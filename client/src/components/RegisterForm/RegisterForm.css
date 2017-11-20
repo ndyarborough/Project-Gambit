@@ -1,10 +1,11 @@
 #register .container-fluid {
-   padding: 5vh 0;
+   padding: 8.5vh 0;
 }
 
 .form-horizontal {
     padding: 5vh 3vw;
     color: #eee;
+    font-family: overwatch;
     background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) );    
     border: black 1px solid;    
 }
@@ -12,6 +13,7 @@
 .form-horizontal label {
     padding: 0.5vh 0;
     margin: 0;
+    font-size: 1.5rem;    
 }
 
 .register-button {
@@ -20,6 +22,7 @@
 
 .form-horizontal input {
     background: transparent;
+    font-family: sans-serif;
     color: #eee;
 }
 
@@ -40,5 +43,6 @@
 
 .register-button {
     padding: 0.5vh 8vw !important;
+    font-size: 1.5rem !important;
     margin: 0 10vw;
 }
