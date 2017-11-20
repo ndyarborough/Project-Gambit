@@ -1,11 +1,8 @@
 #register .container-fluid {
-    height: 92.5vh;
-    background: url('../../imgs/overwatch-bright.jpg');
-    background-size: cover;     
+   padding: 5vh 0;
 }
 
 .form-horizontal {
-    margin-top: 7vh;
     padding: 5vh 3vw;
     color: #eee;
     background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) );    

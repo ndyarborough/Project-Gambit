@@ -1,3 +1,4 @@
-html, body {
-    height: 100vh;
+#login {
+    background: url('../../imgs/overwatch-bright.jpg');
+    background-size: cover;
 }
