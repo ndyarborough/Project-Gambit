@@ -4,7 +4,9 @@ import LoginForm from '../../components/LoginForm/LoginForm.jsx';
 
 const Login = () => {
     return (
-        <LoginForm />
+        <div id='login'>
+            <LoginForm />
+        </div>
     )
 };
 

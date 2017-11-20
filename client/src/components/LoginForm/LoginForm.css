@@ -1,15 +1,23 @@
+#login .container-fluid {
+    padding-top: 7vh;
+}
+
 .loginBox  { /* Class for Row */
     border: 2px solid black;
     height: 40vh;
-    background: blue;
 }
 
 img {
     margin: 8vh 0 0;
-    width: 175px
+    width: 100%;
 }
 
-.col-md-8 {
+.loginBox .col-md-8 {
+    border-left: solid 1px black;
+    padding-top: 5vh;
     max-height: 100%; /* Ensures columns do not stretch past row*/
-    background: red;
+}
+
+.loginBox input {
+    margin-bottom: 2vh;
 }

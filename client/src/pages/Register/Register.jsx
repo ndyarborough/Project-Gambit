@@ -37,7 +37,9 @@ class Register extends React.Component {
 
     render() {
         return (
-            <RegisterForm />
+            <div id='register'>
+                <RegisterForm />
+            </div>
         )
     }
 };
