@@ -1,0 +1,39 @@
+#search {
+    width: 100%;
+    background: url('../../imgs/overwatch-fight.jpg');
+    background-size: cover;
+    height: 92vh;
+    text-align: center;
+}
+
+#search .col-md-3 {
+    margin: 0 auto;
+    height: 100%;
+    padding: 40vh 0 0 4vw;
+    text-align: center;
+}
+
+#search .col-md-3 button {
+    margin: 0 1vw;
+    float: left;
+}
+
+.dropdown {
+    padding: 0
+}
+#findTeam {
+    background: #218ffe;
+    border: black solid 1px;
+    color: #000;
+    float: left;
+    padding: 1vh 1vw;
+    border-radius: 5px;
+}
+
+#findTeam:hover {
+    background: #2567aa
+}    
+
+#findTeam:active {
+    background: #51a8ff
+}    
