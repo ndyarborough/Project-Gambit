@@ -1,23 +1,51 @@
 #login .container-fluid {
-    padding-top: 7vh;
+    padding: 20vh 0 32.5vh;
+    background: url('../../imgs/discord_bg.jpg');
+    background-size: cover;     
 }
 
 .loginBox  { /* Class for Row */
+    font-family: overwatch;
     border: 2px solid black;
-    height: 40vh;
 }
 
 img {
-    margin: 8vh 0 0;
+    margin: 10vh 0 0;
     width: 100%;
 }
 
+.loginBox .col-md-4 {
+    padding: 0;
+    background: #fff; 
+}   
+
 .loginBox .col-md-8 {
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) );    
     border-left: solid 1px black;
-    padding-top: 5vh;
+    padding: 5vh 2vw;
     max-height: 100%; /* Ensures columns do not stretch past row*/
 }
 
+.loginBox label {
+    color: #fff;
+    font-size: 2rem;
+}
+    
+
 .loginBox input {
     margin-bottom: 2vh;
+    background: transparent;
+    font-family: sans-serif;    
+    color: #eee;
+}
+
+.loginBox input:focus {
+    background: transparent;
+    color: #eee;    
+}
+
+.btn-sm {
+    margin: 2vh 10vw;
+    padding: 0 4vw !important;
+    font-size: 2rem !important;
 }

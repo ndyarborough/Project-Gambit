@@ -3,8 +3,6 @@ import { Container, Col, Row } from 'reactstrap';
 import GetUserStats from '../../components/api-routes';
 import './RegisterForm.css';
 
-
-
 class RegisterForm extends React.Component {
     constructor(props) {
         super(props);
