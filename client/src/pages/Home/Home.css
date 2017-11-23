@@ -1,6 +1,6 @@
 #home {
-    background:#405275;    
-    background-size: 100%;
+    background: url('../../imgs/tracer-alone.jpg');    
+    background-size: cover;
     background-repeat: no-repeat;
     background-position:50% 50%;    
     height: 92.5vh;
@@ -8,18 +8,19 @@
 }
 
 #welcomeBox {
-    margin: 0 auto;
+    margin-left: 3vw;
     padding: 1vh 0 1vh;
     text-align: center;
-    width: 70%;
+    width: 45%;
     font-family: overwatch;
     color: #000;
+    border: #000 solid 1px;
+    border-radius: 8px;
     background: #fa9c1a;    
 }
 
 #welcomeBox h1, #welcomeBox img {
     margin: 0;
-    background: #fa9c1a;    
 }    
 
 #welcomeBox hr {
