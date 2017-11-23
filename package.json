@@ -11,16 +11,18 @@
     "type": "git",
     "url": "git+https://github.com/ndyarborough/Project-Gambit.git"
   },
-  "author": "Noah Yarborough, Julian Bridges, Seraj Medhat",
+  "author": "Noah Yarborough, Nicholas Allen, Julian Bridges, Seraj Medhat",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ndyarborough/Project-Gambit/issues"
   },
   "homepage": "https://github.com/ndyarborough/Project-Gambit#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0-beta",
     "cheerio": "^1.0.0-rc.2",
+    "connect-flash": "^0.1.1",
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
@@ -28,6 +30,7 @@
     "logger": "^0.0.1",
     "mongoose": "^4.13.2",
     "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "reactstrap": "^4.8.0",
     "request": "^2.83.0",
     "session": "^0.1.0"

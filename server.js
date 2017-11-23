@@ -8,10 +8,13 @@ var cors = require('cors');
 var expressValidator = require('express-validator');
 var session = require('express-session');
 var passport = require('passport');
+
+// Routes
+const routes = require("./controllers/router");
+
 // Initialize Express
 const app = express();
 const PORT = process.env.PORT || 3001;
-
 
 // Use body parser with our app
 app.use(bodyParser.json());
@@ -27,11 +30,21 @@ app.use(express.static("public"));
 
 app.use(cors());
 
-// Routes
-const routes = require("./controllers/router");
+// Express Validator
+app.use(expressValidator());
+
+// Express Session
+app.use(session({
+    secret: 'gambit',
+    saveUninitialized: true,
+    resave: true
+}));
+
+// Passport init
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use("/api", routes);
-
 
 // Mongoose Configuration
 mongoose.Promise = Promise;
@@ -46,10 +59,6 @@ db.on("error", (error) => {
 db.once("open", () => {
   console.log("Mongoose connection successful.");
 });
-
-// Passport init
-app.use(passport.initialize());
-app.use(passport.session());
 
 // Listen on port 
 // ===================
