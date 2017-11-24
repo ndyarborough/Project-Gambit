@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Col, Row } from 'reactstrap';
 import './RegisterForm.css';
+import GetUserStats from '../../components/api-routes';
 
 class RegisterForm extends React.Component {
     constructor(props) {
@@ -14,6 +15,7 @@ class RegisterForm extends React.Component {
             gamertag: '',
         };
 
+        this.getUserStats = new GetUserStats();
     }
 
     // Register User

@@ -35,8 +35,8 @@ app.use(expressValidator());
 
 // Express Session
 app.use(session({
-    secret: 'gambit',
-    saveUninitialized: true,
+    secret: 'bringmyteamhomeimthegreatgambino',
+    saveUninitialized: false,
     resave: true
 }));
 
