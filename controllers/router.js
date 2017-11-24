@@ -246,7 +246,7 @@ router.route('/updatestats/:email').get(function(req, res) {
 //Logs user into site
 router.route('/login').post(passport.authenticate("local"), function(req, res) {
   console.log(req.user);
-  res.send('logged in');
+  res.redirect('/profile');
 });
 
 // Route for getting some data about our user to be used client side
