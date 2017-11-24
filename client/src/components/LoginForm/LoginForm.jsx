@@ -11,7 +11,6 @@ class LoginForm extends React.Component {
             email: '',
             password: ''
         };
-
     }
 
     // Handles updating component state when the user types into the input field

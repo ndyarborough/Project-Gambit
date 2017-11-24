@@ -4,63 +4,64 @@ import { Container, Col, Row } from 'reactstrap';
 import CharacterSelect from '../../components/CharacterSelect';
 
 class Profile extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-
-    //     }
-    // };
+    constructor(props) {
+        super(props);
+        this.state = {
+            gamertag: '',
+            platform: 'XBL',
+            icon: 'https://d1u1mce87gyfbn.cloudfront.net/game/unlocks/0x0250000000000317.png',
+            skillRating: 4329,
+            tier: 'http://blzgdapipro-a.akamaihd.net/game/rank-icons/season-2/rank-7.png',
+            lifetimeStats: {
+                gamesPlayed: 212,
+                wins: 153,
+                kdr: 5.72,
+                healing: '9,330',
+                damage: '3,345,093',
+                eliminations: '8,732',
+            },
+            heroStats: {
+                name: '',
+                eliminations: 276,
+                hoursPlayed: '',
+                kdr: '',
+                accuracy: '',
+                wins: '',
+                healing: '',
+                damage: '',
+                objKills: '',
+                objTime: '',
+            },
+        }
+    };
 
     render() {
         return(
             <div id='profilePage'>
-                <div id='info'>
-                    <img src='https://tekutiger.files.wordpress.com/2017/06/myversion-nullmari-icon-1500x1500.jpg' />
-                    <div className='accountInfo'>    
-                        <h1 className='username'>It's that Easey</h1>
-                        <div className='icon'></div>
-                    </div>   
-                       <div className='topHero'> 
-                            <h1 className='bestHeader'>Top Hero: Reaper</h1>
-                            <img className='bestHero' src='https://cdn.arstechnica.net/wp-content/uploads/2016/06/overreaper.jpg' />
-                        </div>
-                </div>
-                <div id='findGroup'>
-                    <button>Find Group</button>
-                </div>
-                <div id='heroStats'>
-                    <CharacterSelect />
-                    <Container className='stat-breakdown'> 
-                        <Col className='left' md='3'>
-                            <Row>
-                                <h2>Hours Played: <span>13 Hours</span></h2>
-                            </Row>
-                            <Row>
-                                <h2>Wins: <span>112</span></h2>
-                            </Row>
-                            <Row>
-                                <h2>Eliminations: <span>3864</span></h2>
-                            </Row>
-                            <Row>
-                                <h2>Accuracy: <span>22%</span></h2>
-                            </Row>
-                        </Col>  
-                        <Col className='right' md='3'>
-                            <Row>
-                                <h2>Healing: <span>N/A</span></h2>
-                            </Row>
-                            <Row>
-                                <h2>Damage: <span>14347</span></h2>
-                            </Row>
-                            <Row>
-                                <h2>Objective Kills: <span>234</span></h2>
-                            </Row>
-                            <Row>
-                                <h2>Objective Time: <span>0:12/min</span></h2>
-                            </Row>
-                        </Col>
-                    </Container>
-                </div>
+                <Row id='info'>
+                    <Col md='5' className='accountInfo'>    
+                        <img src={this.state.icon} />
+                        <h1 className='username'>It's that Easey <small>on {this.state.platform}</small></h1>
+                    </Col>  
+                    <Col id='skill' md={{size: 2, offset:1}}>
+                        <Row>
+                            <h3 className='skillRating'>{this.state.skillRating}</h3>
+                        </Row>
+                        <Row><h3>Skill Rating</h3></Row>
+                    </Col> 
+                    <Col md='4' className='topHero'> 
+                        <img className='bestHero' src='https://cdn.arstechnica.net/wp-content/uploads/2016/06/overreaper.jpg' />
+                        <h1 className='bestHeader'>Top Hero: Reaper</h1>
+                    </Col>
+                </Row>
+                {/* <Row className='lifetime'> 
+                    <Col md='2'>Games Played: {this.state.lifetimeStats.gamesPlayed}</Col>
+                    <Col md='2'>Wins: {this.state.lifetimeStats.wins}</Col>
+                    <Col md='2'>Eliminations: {this.state.lifetimeStats.eliminations}</Col>
+                    <Col md='2'>Damage: {this.state.lifetimeStats.damage}</Col>
+                    <Col md='2'>Healing: {this.state.lifetimeStats.healing}</Col>
+                    <Col md='2'>E/D: {this.state.lifetimeStats.kdr}</Col>
+                </Row> */}
             </div>
         )
     }

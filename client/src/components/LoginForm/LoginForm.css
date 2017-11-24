@@ -1,9 +1,3 @@
-#login .container-fluid {
-    padding: 26.5vh 0;
-    background: url('../../imgs/discord_bg.jpg');
-    background-size: cover;     
-}
-
 .loginBox  { /* Class for Row */
     font-family: overwatch;
     border: 2px solid black;
@@ -49,3 +43,9 @@ img {
     padding: 0 4vw !important;
     font-size: 2rem !important;
 }
+
+@media only screen and (max-width: 1400px) {
+    img {
+        margin-top: 17vh;
+    }
+}    
