@@ -2,8 +2,6 @@ import React from 'react';
 import { Container, Col, Row } from 'reactstrap';
 import './LoginForm.css';
 import logo from '../../imgs/Project-Gambit-Logo.png';
-import GetUserStats from '../../components/api-routes'
-
 
 class LoginForm extends React.Component {
 
@@ -13,8 +11,6 @@ class LoginForm extends React.Component {
             email: '',
             password: ''
         };
-
-        this.userLogin = new GetUserStats();
     }
 
     // Handles updating component state when the user types into the input field

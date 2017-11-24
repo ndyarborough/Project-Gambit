@@ -56,3 +56,28 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+@media only screen and (max-width: 1400px) {
+    #home {
+        padding-top: 10vh;
+    }
+
+    #welcomeBox {
+        background: #aaa;
+    }
+
+    #welcomeBox h1 {
+        font-size: 2rem;
+    }
+
+    #welcomeBox a {
+        font-size: 1.5rem;
+    }
+
+    #welcomeBox hr {
+        margin-top: 0.5vh;
+        margin-bottom: 1.5vh;
+        
+    }
+}
+    

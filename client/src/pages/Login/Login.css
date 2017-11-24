@@ -1,4 +1,12 @@
 #login {
-    background: url('../../imgs/overwatch-bright.jpg');
+    background: url('../../imgs/discord_bg.jpg');
     background-size: cover;
+    padding: 20vh 0;
+    height: 90vh;
+}
+
+@media only screen and (max-width: 1400px) {
+    #login {
+        padding: 15vh 0;
+    }
 }

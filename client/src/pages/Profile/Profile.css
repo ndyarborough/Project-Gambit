@@ -1,0 +1,56 @@
+#profilePage{
+    background: url('../../imgs/light-bg.jpg');
+    width: 100%;
+    height:     87.5vh;
+    background-size: cover;
+    font-family: overwatch;
+}
+
+#info {
+    padding: 2vh 2vw;
+    max-width: 100vw;
+    height: 30vh;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) );
+    margin: 0;
+    color: rgb(238, 238, 238);
+}
+
+img {
+    width: 150px;
+    margin: 0;
+    float: left;
+}
+
+.username, .bestHeader {
+    float: left;
+    margin: 7vh 1vw 0 1vw;
+}
+
+.bestHero, .bestHeader {
+    float: right;
+}
+
+.bestHeader {
+    font-size: 2rem;
+    margin-top: 8vh;        
+}
+
+#skill {
+    padding: 5vh 4vw;
+}
+
+.skillRating {
+    margin-left: 2.5vw;
+}
+
+#skill img {
+    height: 20px;
+}
+
+.lifetime {
+    height: 30vh;
+    width: 100%;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) );
+    color: 	#fff;
+    margin: 0;
+}
