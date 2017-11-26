@@ -1,16 +1,16 @@
 #profilePage{
-    background: url('../../imgs/light-bg.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../imgs/light-bg.jpg');
     width: 100%;
     height:     87.5vh;
     background-size: cover;
     font-family: overwatch;
+    text-align: center;
 }
 
 #info {
     padding: 2vh 2vw;
     max-width: 100vw;
-    height: 30vh;
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) );
+    height: 25vh;
     margin: 0;
     color: rgb(238, 238, 238);
 }
@@ -47,10 +47,43 @@ img {
     height: 20px;
 }
 
+.header {
+    background: #43484c;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;    
+    color: #eee;
+    width: 15vw;
+    margin: 0 auto;
+    border: #eee solid 1px;
+    border-bottom: none;
+}
+
 .lifetime {
-    height: 30vh;
-    width: 100%;
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) );
+    margin: 0 2vw !important;
+    background: #43484c;
     color: 	#fff;
-    margin: 0;
+    font-size: 3rem;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;        
+}
+
+.lifetime .col-md-2 {
+    height: 15vh;
+    color: #f99e1a;
+    border: #eee solid 1px;        
+}
+
+.dropdown {
+    margin: 5vh auto;
+    
+}
+
+.heroStats {
+    margin: 0 2vw !important;
+    background: #43484c;
+}
+
+.heroStats .col-md-1 {
+    border: #eee solid 1px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;           
+    font-size: 2rem; 
+    color: #f99e1a;
 }

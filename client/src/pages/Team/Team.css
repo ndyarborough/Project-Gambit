@@ -1,0 +1,13 @@
+#teamPage {
+    height: 93vh; /* Navbar takes up remaining height */
+    margin: 0;
+    background: url('../../imgs/winston-rage.jpg');
+    width: 100%;
+}
+
+#team-battle {
+    margin: 10vh auto;
+    width: 90%;
+    height: 30vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+}

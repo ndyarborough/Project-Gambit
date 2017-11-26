@@ -1,0 +1,13 @@
+.battleCard {
+    border-right: #eee solid 1px;    
+}
+
+.username {
+    margin: 0;
+    color: #eee;
+}
+
+img {
+    color: #eee;
+    width: 100%;
+}

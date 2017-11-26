@@ -21,16 +21,16 @@ class Profile extends React.Component {
                 eliminations: '8,732',
             },
             heroStats: {
-                name: '',
-                eliminations: 276,
-                hoursPlayed: '',
-                kdr: '',
-                accuracy: '',
-                wins: '',
-                healing: '',
-                damage: '',
-                objKills: '',
-                objTime: '',
+                name: 'D.Va',
+                eliminations: 2.98,
+                hoursPlayed: 47,
+                kdr: 5.84,
+                accuracy: 33,
+                wins: 153,
+                healing: 0,
+                damage: 1318,
+                objKills: 1,
+                objTime: 8.07,
             },
         }
     };
@@ -54,14 +54,32 @@ class Profile extends React.Component {
                         <h1 className='bestHeader'>Top Hero: Reaper</h1>
                     </Col>
                 </Row>
-                {/* <Row className='lifetime'> 
+                <h1 className='header'>Lifetime Stats</h1>
+                <Row className='lifetime'> 
                     <Col md='2'>Games Played: {this.state.lifetimeStats.gamesPlayed}</Col>
                     <Col md='2'>Wins: {this.state.lifetimeStats.wins}</Col>
                     <Col md='2'>Eliminations: {this.state.lifetimeStats.eliminations}</Col>
                     <Col md='2'>Damage: {this.state.lifetimeStats.damage}</Col>
                     <Col md='2'>Healing: {this.state.lifetimeStats.healing}</Col>
                     <Col md='2'>E/D: {this.state.lifetimeStats.kdr}</Col>
-                </Row> */}
+                </Row>
+                <CharacterSelect />
+                <h1 className='header'>Specific Hero Stats</h1>
+                <Row className='heroStats'>
+                    <Col md='1'></Col>
+                    <Col md='1'></Col>
+                    <Col md='1'>Eliminations: {this.state.heroStats.eliminations}</Col>
+                    <Col md='1'>Wins: {this.state.heroStats.wins}</Col>
+                    <Col md='1'>Hours Played: {this.state.heroStats.gamesPlayed}</Col>
+                    <Col md='1'>Damage: {this.state.heroStats.damage}</Col>
+                    <Col md='1'>Healing: {this.state.heroStats.healing}</Col>
+                    <Col md='1'>E/D: {this.state.heroStats.kdr}</Col>
+                    <Col md='1'>Accuracy: {this.state.heroStats.accuracy}</Col>
+                    <Col md='1'>Objective Kills: {this.state.heroStats.objKills}</Col>
+                    <Col md='1'>Objective Time: {this.state.heroStats.objTime}</Col>
+                    <Col md='1'></Col>
+                </Row>
+
             </div>
         )
     }
