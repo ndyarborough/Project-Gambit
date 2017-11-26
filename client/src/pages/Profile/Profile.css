@@ -1,10 +1,11 @@
 #profilePage{
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../imgs/light-bg.jpg');
     width: 100%;
-    height:     87.5vh;
+    min-height: 100%;
     background-size: cover;
     font-family: overwatch;
     text-align: center;
+    padding: 1.3vh 0 15vh 0;
 }
 
 #info {
@@ -15,7 +16,7 @@
     color: rgb(238, 238, 238);
 }
 
-img {
+.profileImgs {
     width: 150px;
     margin: 0;
     float: left;
@@ -23,7 +24,7 @@ img {
 
 .username, .bestHeader {
     float: left;
-    margin: 7vh 1vw 0 1vw;
+    margin: 4vh 2vw;
 }
 
 .bestHero, .bestHeader {
@@ -32,7 +33,6 @@ img {
 
 .bestHeader {
     font-size: 2rem;
-    margin-top: 8vh;        
 }
 
 #skill {

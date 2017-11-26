@@ -14,6 +14,15 @@ const Navigation = () =>
                 <NavItem>
                 <Link to='/login'>Login</Link>
                 </NavItem>
+                <NavItem>
+                <Link to='/team'>Team</Link>
+                </NavItem>
+                <NavItem>
+                <Link to='/search'>Search</Link>
+                </NavItem>
+                <NavItem>
+                <Link to='/profile'>Profile</Link>
+                </NavItem>
             </Nav>
         </Navbar>
     </div>

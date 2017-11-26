@@ -31,7 +31,7 @@ class Team extends React.Component {
                 <Row id='team-battle'>
                 {
                  // Create a card for each team member
-                 this.state.team.map((item, i)=> {
+                 this.state.team.map((item, i) => {
                         return <BattleCard  
                                     columnSize='2'
                                     character={this.state.team[i].character} 

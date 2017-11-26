@@ -2,3 +2,8 @@
     font-family: overwatch;;
     src: url(./imgs/koverwatch.ttf);
 }
+
+html, body {
+    min-height: 100%;
+    width: 100%;
+}

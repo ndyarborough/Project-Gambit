@@ -40,7 +40,7 @@ class Profile extends React.Component {
             <div id='profilePage'>
                 <Row id='info'>
                     <Col md='5' className='accountInfo'>    
-                        <img src={this.state.icon} />
+                        <img className='profileImgs' src={this.state.icon} />
                         <h1 className='username'>It's that Easey <small>on {this.state.platform}</small></h1>
                     </Col>  
                     <Col id='skill' md={{size: 2, offset:1}}>
@@ -50,7 +50,7 @@ class Profile extends React.Component {
                         <Row><h3>Skill Rating</h3></Row>
                     </Col> 
                     <Col md='4' className='topHero'> 
-                        <img className='bestHero' src='https://cdn.arstechnica.net/wp-content/uploads/2016/06/overreaper.jpg' />
+                        <img className='profileImgs bestHero' src='https://cdn.arstechnica.net/wp-content/uploads/2016/06/overreaper.jpg' />
                         <h1 className='bestHeader'>Top Hero: Reaper</h1>
                     </Col>
                 </Row>

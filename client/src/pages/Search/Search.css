@@ -1,8 +1,7 @@
 #search {
-    width: 100%;
-    background: url('../../imgs/overwatch-fight.jpg');
+    background: url('../../imgs/overwatch-bg.jpg');
     background-size: cover;
-    height: 92vh;
+    height: 92.5vh;
     text-align: center;
 }
 
