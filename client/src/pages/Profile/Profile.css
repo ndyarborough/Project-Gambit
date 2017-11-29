@@ -17,7 +17,7 @@
 }
 
 .profileImgs {
-    width: 150px;
+    width: 110px;
     margin: 0;
     float: left;
 }
@@ -86,4 +86,10 @@
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;           
     font-size: 2rem; 
     color: #f99e1a;
+}
+
+@media screen and (max-width: 1500px) {
+    .username, .bestHeader {
+        margin: 5vh 2vw; 
+    }
 }

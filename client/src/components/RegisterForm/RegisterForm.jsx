@@ -13,6 +13,7 @@ class RegisterForm extends React.Component {
             platform: '',
             region: '',
             gamertag: '',
+            regionOptions: [],
         };
 
         this.getUserStats = new GetUserStats();
@@ -33,7 +34,29 @@ class RegisterForm extends React.Component {
         this.setState({
             [name]: value
         });
+        if (name === 'platform') {
+            console.log('handleRegionChange')
+            console.log(value)
+            this.handleRegionChange(value);            
+        }
+        console.log(this.state.regionOptions)            
+        
     };
+
+    // Changing state of region dropdown
+    handleRegionChange = platform => {
+        if (platform === 'PC') {
+            console.log('set state region options')
+            this.setState({
+                regionOptions: ['CN', 'EU', 'US', 'KR']
+            });
+        }   
+        else if (platform === 'XBOX' || platform ==='PSN') {
+            this.setState({
+                regionOptions: ['Global']
+            });
+        }
+    }
 
     render() {
         return (
@@ -97,16 +120,14 @@ class RegisterForm extends React.Component {
                                 <label htmlFor="Region">Region (PS4 and XBOX - Region: Global)</label>
                                 <select
                                     name='region'
-                                    onChange={this.handleInputChange}
+                                    onChange={this.handleRegionChange}
                                     value={this.state.region}
                                     select='false'
                                     id='regionSelect'
                                     className="form-control" >
-                                    <option>CN</option>
-                                    <option>EU</option>
-                                    <option>GLOBAL</option>
-                                    <option>KR</option>
-                                    <option>US</option>
+                                  {
+                                    this.state.regionOptions.map((region) => <option key={region}>{region}</option>)
+                                   }
                                 </select>
                                 <br />
                                 <button onClick={this.handleFormSubmit} type="submit" className="btn btn-primary register-button"><i className="fa fa-user-plus"></i> Register</button>
