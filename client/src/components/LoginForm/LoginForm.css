@@ -4,7 +4,7 @@
 }
 
 img {
-    margin: 10vh 0 0;
+    margin: 15vh 0 0;
     width: 100%;
 }
 
@@ -39,7 +39,7 @@ img {
 }
 
 .btn-sm {
-    margin: 2vh 10vw;
+    margin: 2vh 0;
     padding: 0 4vw !important;
     font-size: 2rem !important;
 }
