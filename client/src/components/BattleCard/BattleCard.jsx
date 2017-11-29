@@ -6,7 +6,7 @@ const BattleCard = (props) => {
     return (
         <Col className='battleCard' md={props.columnSize}>
             <h4 className='cardName'>{props.username}</h4>
-            <img className='characterPic' src={require(`../../imgs/${props.character}-photo.png`)} />
+            <img className='characterPic' src={require(`../../imgs/${props.character}.png`)} />
         </Col>
     )
 }
