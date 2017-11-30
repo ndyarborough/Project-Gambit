@@ -28,18 +28,18 @@ export default class CharacterSelect extends React.Component {
     return (
       <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
         <DropdownToggle caret>
-          {this.state.dropdownValue}
+          {this.props.currentHero}
         </DropdownToggle>
         <DropdownMenu>
           <DropdownItem header>Attack</DropdownItem>
-          <DropdownItem onClick={this.handleChange}>Doomfist</DropdownItem>
-          <DropdownItem onClick={this.handleChange}>Genji</DropdownItem>
-          <DropdownItem onClick={this.handleChange}>Mcree</DropdownItem>
-          <DropdownItem onClick={this.handleChange}>Pharah</DropdownItem>
-          <DropdownItem onClick={this.handleChange}>Reaper</DropdownItem>
-          <DropdownItem onClick={this.handleChange}>Soldier: 76</DropdownItem>
-          <DropdownItem onClick={this.handleChange}>Sombra</DropdownItem>
-          <DropdownItem onClick={this.handleChange}>Tracer</DropdownItem>
+          <DropdownItem onClick={this.props.balls || this.handleChange}>Doomfist</DropdownItem>
+          <DropdownItem onClick={this.props.balls || this.handleChange}>Genji</DropdownItem>
+          <DropdownItem onClick={this.props.balls || this.handleChange}>Mccree</DropdownItem>
+          <DropdownItem onClick={this.props.balls || this.handleChange}>Pharah</DropdownItem>
+          <DropdownItem onClick={this.props.balls || this.handleChange}>Reaper</DropdownItem>
+          <DropdownItem onClick={this.props.balls || this.handleChange}>Soldier: 76</DropdownItem>
+          <DropdownItem onClick={this.props.balls || this.handleChange}>Sombra</DropdownItem>
+          <DropdownItem onClick={this.props.balls || this.handleChange}>Tracer</DropdownItem>
           <DropdownItem divider />
           <DropdownItem header>Defense</DropdownItem>
           <DropdownItem onClick={this.handleChange}>Bastion</DropdownItem>

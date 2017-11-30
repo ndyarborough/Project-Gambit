@@ -66,26 +66,24 @@
 }
 
 .lifetime .col-md-2 {
-    height: 15vh;
     color: #f99e1a;
+    font-size: 2vw;
     border: #eee solid 1px;        
 }
 
 .dropdown {
     margin: 5vh auto;
-    
 }
 
 .heroStats {
-    margin: 0 2vw !important;
-    background: #43484c;
+    width: 90%;
+    background: #aaa;
+    margin: 0 auto !important;
 }
 
-.heroStats .col-md-1 {
-    border: #eee solid 1px;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;           
-    font-size: 2rem; 
-    color: #f99e1a;
+.heroStats img {
+    width: 18vw;
+    margin: 0;
 }
 
 @media screen and (max-width: 1500px) {

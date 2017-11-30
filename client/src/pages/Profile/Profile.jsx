@@ -12,6 +12,7 @@ class Profile extends React.Component {
             icon: 'https://d1u1mce87gyfbn.cloudfront.net/game/unlocks/0x0250000000000317.png',
             skillRating: 4329,
             tier: 'http://blzgdapipro-a.akamaihd.net/game/rank-icons/season-2/rank-7.png',
+            currentHero: 'reaper',
             lifetimeStats: {
                 gamesPlayed: 212,
                 wins: 153,
@@ -34,6 +35,13 @@ class Profile extends React.Component {
             },
         }
     };
+
+    renderNewHeroStats = (event) => {
+        const hero = event.target.innerText;
+        this.setState({
+            currentHero: hero
+          });
+    }
 
     render() {
         return(
@@ -63,23 +71,11 @@ class Profile extends React.Component {
                     <Col md='2'>Healing: {this.state.lifetimeStats.healing}</Col>
                     <Col md='2'>E/D: {this.state.lifetimeStats.kdr}</Col>
                 </Row>
-                <CharacterSelect />
+                <CharacterSelect currentHero={this.state.currentHero} balls={this.renderNewHeroStats}/>
                 <h1 className='header'>Specific Hero Stats</h1>
                 <Row className='heroStats'>
-                    <Col md='1'></Col>
-                    <Col md='1'></Col>
-                    <Col md='1'>Eliminations: {this.state.heroStats.eliminations}</Col>
-                    <Col md='1'>Wins: {this.state.heroStats.wins}</Col>
-                    <Col md='1'>Hours Played: {this.state.heroStats.gamesPlayed}</Col>
-                    <Col md='1'>Damage: {this.state.heroStats.damage}</Col>
-                    <Col md='1'>Healing: {this.state.heroStats.healing}</Col>
-                    <Col md='1'>E/D: {this.state.heroStats.kdr}</Col>
-                    <Col md='1'>Accuracy: {this.state.heroStats.accuracy}</Col>
-                    <Col md='1'>Objective Kills: {this.state.heroStats.objKills}</Col>
-                    <Col md='1'>Objective Time: {this.state.heroStats.objTime}</Col>
-                    <Col md='1'></Col>
+                  <img src={require(`../../imgs/${this.state.currentHero.toLowerCase().replace(':', '').replace(' ', '')}.png`)} />
                 </Row>
-
             </div>
         )
     }
