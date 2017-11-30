@@ -6,6 +6,7 @@
     font-family: overwatch;
     text-align: center;
     padding: 1.3vh 0 15vh 0;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;        
 }
 
 #info {
@@ -41,6 +42,7 @@
 
 .skillRating {
     margin-left: 2.5vw;
+    line-height: 1.5;
 }
 
 #skill img {
@@ -49,7 +51,6 @@
 
 .header {
     background: #43484c;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;    
     color: #eee;
     width: 15vw;
     margin: 0 auto;
@@ -73,17 +74,49 @@
 
 .dropdown {
     margin: 5vh auto;
+    text-shadow: none;
 }
 
 .heroStats {
     width: 90%;
     background: #aaa;
+    text-shadow: none;
     margin: 0 auto !important;
 }
 
 .heroStats img {
     width: 18vw;
     margin: 0;
+}
+
+.stats-header {
+    margin: 2vh 2vw;
+    text-align: left;
+}
+
+.raw-hero-stats {
+    background: #fff;
+}
+
+.raw-hero-stats .col-md-3 {
+    text-align: left;
+    padding: 8vh 0;
+}
+
+.raw-hero-stats .col-md-3 h3 {
+    padding: 0 2vw;
+    margin: .7vh auto;
+}
+
+.raw-hero-stats .col-md-9 {
+    padding: 0;
+}
+    
+
+.raw-hero-stats .col-md-9 video {
+    margin-top: 6vh;
+    width: 100%;
+    padding: 0;
 }
 
 @media screen and (max-width: 1500px) {

@@ -7,12 +7,12 @@ class Profile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            gamertag: '',
+            gamertag: 'Its that Easey',
             platform: 'XBL',
             icon: 'https://d1u1mce87gyfbn.cloudfront.net/game/unlocks/0x0250000000000317.png',
             skillRating: 4329,
             tier: 'http://blzgdapipro-a.akamaihd.net/game/rank-icons/season-2/rank-7.png',
-            currentHero: 'reaper',
+            currentHero: 'doomfist',
             lifetimeStats: {
                 gamesPlayed: 212,
                 wins: 153,
@@ -38,32 +38,35 @@ class Profile extends React.Component {
 
     renderNewHeroStats = (event) => {
         const hero = event.target.innerText;
+        // API Call Goes Here //
+        // getHeroStats(hero);
+        // Set data from response equal to this.state.heroStats 
         this.setState({
+            // heroStats: res.data
             currentHero: hero
-          });
+        });
     }
 
     render() {
-        return(
+        return (
             <div id='profilePage'>
                 <Row id='info'>
-                    <Col md='5' className='accountInfo'>    
+                    <Col md='5' className='accountInfo'>
                         <img className='profileImgs' src={this.state.icon} />
-                        <h1 className='username'>It's that Easey <small>on {this.state.platform}</small></h1>
-                    </Col>  
-                    <Col id='skill' md={{size: 2, offset:1}}>
+                        <h1 className='username'>{this.state.gamertag} <small>on {this.state.platform}</small></h1>
+                    </Col>
+                    <Col id='skill' md='3'>
                         <Row>
-                            <h3 className='skillRating'>{this.state.skillRating}</h3>
+                            <h3 className='skillRating'>Skill Rating: {this.state.skillRating}</h3>
                         </Row>
-                        <Row><h3>Skill Rating</h3></Row>
-                    </Col> 
-                    <Col md='4' className='topHero'> 
+                    </Col>
+                    <Col md='4' className='topHero'>
                         <img className='profileImgs bestHero' src='https://cdn.arstechnica.net/wp-content/uploads/2016/06/overreaper.jpg' />
                         <h1 className='bestHeader'>Top Hero: Reaper</h1>
                     </Col>
                 </Row>
                 <h1 className='header'>Lifetime Stats</h1>
-                <Row className='lifetime'> 
+                <Row className='lifetime'>
                     <Col md='2'>Games Played: {this.state.lifetimeStats.gamesPlayed}</Col>
                     <Col md='2'>Wins: {this.state.lifetimeStats.wins}</Col>
                     <Col md='2'>Eliminations: {this.state.lifetimeStats.eliminations}</Col>
@@ -71,13 +74,33 @@ class Profile extends React.Component {
                     <Col md='2'>Healing: {this.state.lifetimeStats.healing}</Col>
                     <Col md='2'>E/D: {this.state.lifetimeStats.kdr}</Col>
                 </Row>
-                <CharacterSelect currentHero={this.state.currentHero} balls={this.renderNewHeroStats}/>
-                <h1 className='header'>Specific Hero Stats</h1>
+                <CharacterSelect currentHero={this.state.currentHero} handler={this.renderNewHeroStats} />
                 <Row className='heroStats'>
-                  <img src={require(`../../imgs/${this.state.currentHero.toLowerCase().replace(':', '').replace(' ', '')}.png`)} />
-                </Row>
+                    <Col md='3'>
+                        <img src={require(`../../imgs/${this.state.currentHero.toLowerCase().replace(':', '').replace(' ', '')}.png`)} />
+                    </Col>
+                    <Col md='9' className='raw-hero-stats'>
+                        <Row>
+                            <Col md='3'>
+                                <h3><small>Hours Played: </small>{this.state.heroStats.hoursPlayed}</h3>
+                                <h3><small>Eliminations: </small>{this.state.heroStats.eliminations}</h3>
+                                <h3><small>Accuracy: </small>{this.state.heroStats.accuracy}</h3>
+                                <h3><small>Objective Kills: </small>{this.state.heroStats.eliminations}</h3>
+                                <h3><small>Objective Time: </small>{this.state.heroStats.eliminations}</h3>
+                                <h3><small>E/D: </small>{this.state.heroStats.kdr}</h3>
+                                <h3><small>Wins: </small>{this.state.heroStats.wins}</h3>
+                                <h3><small>Healing: </small>{this.state.heroStats.hoursPlayed}</h3>
+                                <h3><small>Damage: </small>{this.state.heroStats.eliminations}</h3>
+                            </Col>
+                            <Col md='9'>
+                                <video src={require(`../../imgs/${this.state.currentHero.toLowerCase().replace(':', '').replace(' ', '')}-intro.webm`)} autoPlay loop>
+                                </video>
+                            </Col>
+                        </Row>
+                            </Col>
+                        </Row>
             </div>
-        )
+                    )
     }
 }
 
