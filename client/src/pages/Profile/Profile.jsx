@@ -51,8 +51,10 @@ class Profile extends React.Component {
         return (
             <div id='profilePage'>
                 <Row id='info'>
-                    <Col md='5' className='accountInfo'>
+                    <Col md='1'>
                         <img className='profileImgs' src={this.state.icon} />
+                    </Col>
+                    <Col md='4' className='accountInfo'>
                         <h1 className='username'>{this.state.gamertag} <small>on {this.state.platform}</small></h1>
                     </Col>
                     <Col id='skill' md='3'>
@@ -60,9 +62,11 @@ class Profile extends React.Component {
                             <h3 className='skillRating'>Skill Rating: {this.state.skillRating}</h3>
                         </Row>
                     </Col>
-                    <Col md='4' className='topHero'>
-                        <img className='profileImgs bestHero' src='https://cdn.arstechnica.net/wp-content/uploads/2016/06/overreaper.jpg' />
+                    <Col md='3' className='topHero'>
                         <h1 className='bestHeader'>Top Hero: Reaper</h1>
+                    </Col>
+                    <Col md='1'>
+                        <img className='profileImgs bestHero' src='https://cdn.arstechnica.net/wp-content/uploads/2016/06/overreaper.jpg' />
                     </Col>
                 </Row>
                 <h1 className='header'>Lifetime Stats</h1>

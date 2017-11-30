@@ -17,36 +17,33 @@
     color: rgb(238, 238, 238);
 }
 
+#info .col-md-1 {
+    padding: 0;
+}
+
+#info h1 {
+    margin: 0;
+}
+
+#info .col-md-3, #info .col-md-4 {
+    padding: 3.5vh 0;
+}
+
+#info .col-md-3 .row {
+    padding: 1.5vh 0;
+    margin: 0;
+}
+
+#info .username {
+    text-align: left;
+    padding: 0 2vw;
+}
+
 .profileImgs {
-    width: 110px;
+    width: 100%;
     margin: 0;
     float: left;
-}
-
-.username, .bestHeader {
-    float: left;
-    margin: 4vh 2vw;
-}
-
-.bestHero, .bestHeader {
-    float: right;
-}
-
-.bestHeader {
-    font-size: 2rem;
-}
-
-#skill {
-    padding: 5vh 4vw;
-}
-
-.skillRating {
-    margin-left: 2.5vw;
-    line-height: 1.5;
-}
-
-#skill img {
-    height: 20px;
+    padding: 0;
 }
 
 .header {
