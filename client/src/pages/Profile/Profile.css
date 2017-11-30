@@ -79,9 +79,10 @@
 
 .heroStats {
     width: 90%;
-    background: #aaa;
-    text-shadow: none;
+    background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) );    
     margin: 0 auto !important;
+    border: #f99e1a 2px solid;
+    color: #eee;
 }
 
 .heroStats img {
@@ -94,29 +95,34 @@
     text-align: left;
 }
 
-.raw-hero-stats {
-    background: #fff;
-}
-
 .raw-hero-stats .col-md-3 {
     text-align: left;
-    padding: 8vh 0;
+    background: #43484c;
+    border-left: #f99e1a solid 1px;
+    border-right: #f99e1a solid 1px;    
+    padding: 4vh 2vw;
 }
 
+.raw-hero-stats .col-md-3 h2 {
+    margin: 0 auto;
+    text-decoration: underline;
+}
+    
+
 .raw-hero-stats .col-md-3 h3 {
-    padding: 0 2vw;
-    margin: .7vh auto;
+    margin: .7vh auto;    
 }
 
 .raw-hero-stats .col-md-9 {
     padding: 0;
 }
     
+.introHeader {
+    margin: 0;
+}
 
 .raw-hero-stats .col-md-9 video {
-    margin-top: 6vh;
     width: 100%;
-    padding: 0;
 }
 
 @media screen and (max-width: 1500px) {

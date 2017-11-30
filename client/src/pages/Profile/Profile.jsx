@@ -77,11 +77,12 @@ class Profile extends React.Component {
                 <CharacterSelect currentHero={this.state.currentHero} handler={this.renderNewHeroStats} />
                 <Row className='heroStats'>
                     <Col md='3'>
-                        <img src={require(`../../imgs/${this.state.currentHero.toLowerCase().replace(':', '').replace(' ', '')}.png`)} />
+                        <img src={require(`../../imgs/${this.state.currentHero.toLowerCase().replace('.', '').replace(':', '').replace(' ', '')}.png`)} />
                     </Col>
                     <Col md='9' className='raw-hero-stats'>
                         <Row>
                             <Col md='3'>
+                                <h2>Hero Stats</h2>
                                 <h3><small>Hours Played: </small>{this.state.heroStats.hoursPlayed}</h3>
                                 <h3><small>Eliminations: </small>{this.state.heroStats.eliminations}</h3>
                                 <h3><small>Accuracy: </small>{this.state.heroStats.accuracy}</h3>
@@ -93,7 +94,8 @@ class Profile extends React.Component {
                                 <h3><small>Damage: </small>{this.state.heroStats.eliminations}</h3>
                             </Col>
                             <Col md='9'>
-                                <video src={require(`../../imgs/${this.state.currentHero.toLowerCase().replace(':', '').replace(' ', '')}-intro.webm`)} autoPlay loop>
+                                <h2 className='introHeader'>Meet {this.state.currentHero}!</h2>
+                                <video src={require(`../../imgs/${this.state.currentHero.toLowerCase().replace('.', '').replace(':', '').replace(' ', '')}-intro.webm`)} autoPlay loop>
                                 </video>
                             </Col>
                         </Row>
