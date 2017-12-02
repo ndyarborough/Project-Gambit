@@ -8,6 +8,10 @@ var cors = require('cors');
 var expressValidator = require('express-validator');
 var session = require('express-session');
 var passport = require('passport');
+var cookieSession = require('cookie-session');
+var cookieParser = require('cookie-parser');
+var MongoStore = require('connect-mongo')(session);
+var passportSetup = require('./config/passport-route');
 
 // Routes
 const routes = require("./controllers/router");
@@ -25,6 +29,9 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({
   type: "application/vnd.api+json"
 }));
+
+app.use(cookieParser());
+
 // Deliver files to front end from the public directory
 app.use(express.static("public"));
 
@@ -35,9 +42,13 @@ app.use(expressValidator());
 
 // Express Session
 app.use(session({
-    secret: 'bringmyteamhomeimthegreatgambino',
+    secret: 'secret',
+    store: new MongoStore({
+    		mongooseConnection: mongoose.connection,
+    		touchAfter: 24 * 3600
+    	}),
     saveUninitialized: false,
-    resave: true
+    resave: false
 }));
 
 // Passport init

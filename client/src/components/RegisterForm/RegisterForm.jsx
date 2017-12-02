@@ -11,7 +11,7 @@ class RegisterForm extends React.Component {
             password: '',
             confirmPassword: '',
             platform: '',
-            region: '',
+            region: 'global',
             gamertag: '',
             regionOptions: [],
         };
@@ -25,6 +25,7 @@ class RegisterForm extends React.Component {
         if (this.state.email && this.state.password && this.state.confirmPassword && this.state.platform && this.state.region && this.state.gamertag) {
             this.getUserStats.scrapeWebsite(this.state.platform, this.state.region, this.state.gamertag, this.state.email, this.state.password, this.state.confirmPassword);
         }else {
+            console.log(this.state)
             console.log('Please fill out entire form!');
         }
     }

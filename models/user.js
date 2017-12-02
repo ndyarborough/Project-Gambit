@@ -10,6 +10,19 @@ var userSchema = new Schema({
     unique: true
   },
 
+  online: {
+    type: Boolean,
+    default: false
+  },
+
+  level: {
+    type: Number
+  },
+
+  skillRating: {
+    type: Number
+  },
+
   password: {
     type: String,
     required: true
@@ -61,7 +74,10 @@ var userSchema = new Schema({
 
   kdr: {
     type: Number
-  }
+  },
+}, 
+{
+  timestamps: true
 });
 
 // hash the password

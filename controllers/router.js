@@ -5,9 +5,10 @@ const app = express();
 const router = express.Router();
 const cheerio = require("cheerio");
 const request = require('request');
-const passport = require("../config/passport-route");
+const passport = require("passport");
 const Hero = require('../models/hero.js');
-const User = require('../models/user.js'); 
+const User = require('../models/user.js');
+const Room = require('../models/room.js') 
 
 //Checks to see if users gamertag exist on masteroverwatch
 router.route('/check/:platform/:region/:gamertag').get(function(req, res) {
@@ -78,6 +79,8 @@ router.route('/register').post(function(req, res) {
           userResults.accuracy = replaceNan(parseFloat(lifetimeStats.children('div:nth-child(4)').children('div:nth-child(4)').children('div:nth-child(2)').children().first().text().replace('%', '')));
           userResults.damage = replaceNan(parseFloat(lifetimeStats.children('div:nth-child(4)').children('div:nth-child(5)').children('div:nth-child(2)').children().first().text().replace(/,/g,'')));
           userResults.healing = replaceNan(parseFloat(lifetimeStats.children('div:nth-child(4)').children('div:nth-child(7)').children('div:nth-child(2)').children().first().text().replace(/,/g,'')));
+          userResults.level = $('div.header-avatar').children('span').text();
+          userResults.skillRating = parseFloat($('div.header-stat').children('strong').text().replace(/,/g,''));
 
           User.findOneAndUpdate({
             '_id': doc._id
@@ -89,12 +92,14 @@ router.route('/register').post(function(req, res) {
             'kdr': userResults.kdr,
             'accuracy': userResults.accuracy,
             'damage': userResults.damage,
-            'healing': userResults.healing
+            'healing': userResults.healing,
+            'level': userResults.level,
+            'skillRating': userResults.skillRating
           }).exec(function(erro, docu) {
             if (erro) {
               console.log(erro);
             }else { 
-              //console.log(docu);
+              //no response
             }
           });
 
@@ -138,6 +143,8 @@ router.route('/register').post(function(req, res) {
       }
     })
   }
+
+  res.send('Registered')
 });
 
 //Updates heroes and lifetime stats before every login
@@ -197,7 +204,6 @@ router.route('/updatestats/:email').get(function(req, res) {
         if (erro) {
           console.log(erro);
         }else { 
-          console.log('updatesUser');
         }
       });
 
@@ -234,7 +240,6 @@ router.route('/updatestats/:email').get(function(req, res) {
           if (errors) {
             console.log(errors);
           }else {
-            console.log('updatedHero')
           }
         })       
       })
@@ -245,9 +250,16 @@ router.route('/updatestats/:email').get(function(req, res) {
 
 //Logs user into site
 router.route('/login').post(passport.authenticate("local"), function(req, res) {
-  console.log(req.user);
-  res.redirect('/profile');
+  res.json(req.user);
+  console.log(req.session.cookie);
+  console.log(req.session);
 });
+
+//Logs out user
+router.route('/logout').post(function(req, res) {
+  req.logout();
+  res.json('logged out')
+})
 
 // Route for getting some data about our user to be used client side
 router.route("/user_data").get(function(req, res) {
@@ -262,14 +274,115 @@ router.route("/user_data").get(function(req, res) {
   }
 });
 
-//Route for getting Heroes stats and sending them client side
-router.route('/getstats/:id').get(function(req, res) {
-  // console.log(req.user);
-  Hero.find({'User': req.params.id}).exec(function(err, data) {
+//Route for getting User stats and sending them client side
+router.route('/getuserstats').get(function(req, res) {
+  User.findOne({'_id': req.user.id}).exec(function(err, doc) {
     if (err) {
       console.log(err);
     }else {
-      res.send(data);
+      res.json(doc);
+    }
+  })
+});
+
+//Route for getting Heroes stats and sending them client side
+router.route('/getherostats').get(function(req, res) {
+  Hero.find({'User': req.user.id}).exec(function(err, doc) {
+    if (err) {
+      console.log(err);
+    }else {
+      res.json(doc);
+    }
+  })
+});
+
+router.route('/match').post(function(req, res) {
+  console.log(req.user.skillRating);
+
+  Room.find({}).count(function(err, count) {
+    if (err) {
+      console.log(err);
+    }
+    else if (!err && count === 0) {
+      var roomEntry = new Room();
+
+      roomEntry.inUse = true;
+      roomEntry.occupants.push(req.user.id);
+
+      roomEntry.save(function(err, doc) {
+        if (err) {
+          console.log(err);
+        }else {
+          console.log(doc);
+        }
+      })
+      res.json('added')
+    }
+    else {
+      Room.find({}).populate('occupants').exec(function(err, doc) {
+        if (err) {
+          console.log(err);
+        }else {
+
+          for (var i = 0; i < doc.length; i++) {
+
+            const lowScore = doc[i].occupants[0].skillRating - 1000;
+            const highScore = doc[i].occupants[0].skillRating + 1000;
+
+            console.log(lowScore);
+            console.log(highScore);
+
+            if (req.user.skillRating >= lowScore && req.user.skillRating <= highScore) {
+              console.log('adding me')
+              Room.findOneAndUpdate({
+                '_id': doc[i]._id
+              }, {
+                $push: {occupants: req.user.id}
+              })
+            }else {
+              console.log('my room')
+              var roomEntry = new Room();
+
+              roomEntry.inUse = true;
+
+              roomEntry.occupants.push(req.user.id);
+
+              roomEntry.save(function(err, doc) {
+                if (err) {
+                  console.log(err);
+                }else {
+                  console.log(doc);
+                }
+              })
+              res.json('added')
+            } 
+          }
+        }
+      })
+    }
+  })
+});
+
+router.route('/addtoroom').post(function(req, res) {
+  Room.findOneAndUpdate(
+    {
+      '_id': '5a220fbcf34a00c9843c1b1f'
+    },
+    {
+      $push: {occupants: {$each: ['5a22f34fca7c8e8f2860ef3f', '5a22f33dca7c8e8f2860ef25', '5a22f32fca7c8e8f2860ef0b', '5a22f19e741b6272f4254963']}}
+    })
+  .exec(function(err, doc) {
+    res.json(doc);
+  })
+})
+
+router.route('/getRoom').get(function(req, res) {
+  console.log(req.user);
+  Room.find({}).populate('occupants').exec(function(err, doc) {
+    if (err) {
+      console.log(err);
+    }else {
+      res.json(doc);
     }
   })
 });

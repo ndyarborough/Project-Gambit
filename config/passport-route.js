@@ -28,7 +28,6 @@ passport.use(new LocalStrategy(
           message: "Incorrect password."
         });
       }
-      console.log(dbUser);
       // If none of the above, return the user
       return done(null, dbUser);
     });
@@ -40,7 +39,7 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-  User.findOneById(id, function(err, user) {
+  User.findById(id, function(err, user) {
     done(err, user);
   })
 });

@@ -48,6 +48,9 @@ var HeroSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User"
   }
+},
+{
+  timestamps: true
 });
 
 var Hero = mongoose.model("Hero", HeroSchema);
