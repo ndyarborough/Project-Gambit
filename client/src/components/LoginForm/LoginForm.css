@@ -10,7 +10,7 @@ img {
 
 .loginBox .col-md-4 {
     padding: 0;
-    background: #fff; 
+    background: rgba(0, 0, 0, 0.7);
 }   
 
 .loginBox .col-md-8 {

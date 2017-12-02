@@ -13,7 +13,7 @@ class RegisterForm extends React.Component {
             platform: '',
             region: 'global',
             gamertag: '',
-            regionOptions: [],
+            regionOptions: ['Global'],
         };
 
         this.getUserStats = new GetUserStats();
@@ -68,7 +68,7 @@ class RegisterForm extends React.Component {
                             <form className="form-horizontal">
                                 <h2>Register New User</h2>
                                 <hr />
-                                <label htmlFor="email">E-Mail Address</label>
+                                <label htmlFor="email">Email Address</label>
                                 <input
                                     name='email'
                                     onChange={this.handleInputChange}
@@ -122,7 +122,6 @@ class RegisterForm extends React.Component {
                                 <select
                                     name='region'
                                     onChange={this.handleRegionChange}
-                                    value={this.state.region}
                                     select='false'
                                     id='regionSelect'
                                     className="form-control" >

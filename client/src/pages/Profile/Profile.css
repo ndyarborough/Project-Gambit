@@ -6,6 +6,7 @@
     font-family: overwatch;
     text-align: center;
     padding: 1.3vh 0 15vh 0;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;        
 }
 
 #info {
@@ -16,40 +17,37 @@
     color: rgb(238, 238, 238);
 }
 
+#info .col-md-1 {
+    padding: 0;
+}
+
+#info h1 {
+    margin: 0;
+}
+
+#info .col-md-3, #info .col-md-4 {
+    padding: 3.5vh 0;
+}
+
+#info .col-md-3 .row {
+    padding: 1.5vh 0;
+    margin: 0;
+}
+
+#info .username {
+    text-align: left;
+    padding: 0 2vw;
+}
+
 .profileImgs {
-    width: 110px;
+    width: 100%;
     margin: 0;
     float: left;
-}
-
-.username, .bestHeader {
-    float: left;
-    margin: 4vh 2vw;
-}
-
-.bestHero, .bestHeader {
-    float: right;
-}
-
-.bestHeader {
-    font-size: 2rem;
-}
-
-#skill {
-    padding: 5vh 4vw;
-}
-
-.skillRating {
-    margin-left: 2.5vw;
-}
-
-#skill img {
-    height: 20px;
+    padding: 0;
 }
 
 .header {
     background: #43484c;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;    
     color: #eee;
     width: 15vw;
     margin: 0 auto;
@@ -66,26 +64,62 @@
 }
 
 .lifetime .col-md-2 {
-    height: 15vh;
     color: #f99e1a;
+    font-size: 2vw;
     border: #eee solid 1px;        
 }
 
 .dropdown {
     margin: 5vh auto;
-    
+    text-shadow: none;
 }
 
 .heroStats {
-    margin: 0 2vw !important;
-    background: #43484c;
+    width: 90%;
+    background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) );    
+    margin: 0 auto !important;
+    border: #f99e1a 2px solid;
+    color: #eee;
 }
 
-.heroStats .col-md-1 {
-    border: #eee solid 1px;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;           
-    font-size: 2rem; 
-    color: #f99e1a;
+.heroStats img {
+    width: 18vw;
+    margin: 0;
+}
+
+.stats-header {
+    margin: 2vh 2vw;
+    text-align: left;
+}
+
+.raw-hero-stats .col-md-3 {
+    text-align: left;
+    background: #43484c;
+    border-left: #f99e1a solid 1px;
+    border-right: #f99e1a solid 1px;    
+    padding: 4vh 2vw;
+}
+
+.raw-hero-stats .col-md-3 h2 {
+    margin: 0 auto;
+    text-decoration: underline;
+}
+    
+
+.raw-hero-stats .col-md-3 h3 {
+    margin: .7vh auto;    
+}
+
+.raw-hero-stats .col-md-9 {
+    padding: 0;
+}
+    
+.introHeader {
+    margin: 0;
+}
+
+.raw-hero-stats .col-md-9 video {
+    width: 100%;
 }
 
 @media screen and (max-width: 1500px) {

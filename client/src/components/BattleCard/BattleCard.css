@@ -1,5 +1,6 @@
 .battleCard {
-    border-right: #eee solid 1px;    
+    border: #eee solid 1px;
+    padding: 0;
 }
 
 .cardName {
@@ -11,4 +12,5 @@
     color: #eee;
     width: 100%;
     margin: 0;
+    padding: 0;
 }
