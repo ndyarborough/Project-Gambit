@@ -1,13 +1,21 @@
 #teamPage {
-    height: 93vh; /* Navbar takes up remaining height */
+    height: 95vh; /* Navbar takes up remaining height */
     margin: 0;
     background: url('../../imgs/winston-rage.jpg');
-    width: 100%;
+    background-size: cover;
+    font-family: overwatch;
 }
 
 #team-battle {
-    margin: 10vh auto;
-    width: 90%;
-    height: 30vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    margin: 0 auto;
+    width: 70%;
+    /* max-height: 45vh; */
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#chat-box {
+    margin: 0 auto;
+    width: 70%;
+    background: rgba(0, 0, 0, 0.5);
+    height: 60vh;
 }

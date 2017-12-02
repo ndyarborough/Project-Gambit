@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Row } from 'reactstrap';
 import BattleCard from '../../components/BattleCard/BattleCard.jsx';
 import './Team.css';
+import ChatBox from '../../components/ChatBox/ChatBox.jsx';
 
 class Team extends React.Component {
     constructor(props) {
@@ -9,8 +10,8 @@ class Team extends React.Component {
         this.state = {
            team: [
             {
-               username: 'felixgunner547',
-               character: 'reaper',
+               username: 'baseballman04',
+               character: 'bastion',
             },
             {
                 username: 'serajWRECKS23',
@@ -19,7 +20,20 @@ class Team extends React.Component {
             {
                 username: 'newcharacter',
                 character: 'reaper',
-             }]
+             },
+            {
+                username: 'mrwonderful',
+                character: 'winston',
+            },
+            {
+                username: 'mranderson',
+                character: 'junkrat',
+            },
+            {
+                username: 'mrnickallen',
+                character: 'reinhardt',
+            }
+            ]
         };
     }
 
@@ -27,7 +41,7 @@ class Team extends React.Component {
 
     render() { 
         return (
-            <Row id='teamPage'>
+            <div id='teamPage'>
                 <Row id='team-battle'>
                 {
                  // Create a card for each team member
@@ -40,7 +54,15 @@ class Team extends React.Component {
                 }
 
                 </Row>
-            </Row>
+                <Row id='chat-box'>
+                {
+                    <ChatBox
+                        columnSize='12'
+                        title='This is the chat box'
+                    />                
+                }
+                </Row>
+            </div>
         )
     }
 }
