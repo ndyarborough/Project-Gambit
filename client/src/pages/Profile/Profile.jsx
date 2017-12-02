@@ -2,6 +2,7 @@ import React from 'react';
 import './Profile.css';
 import { Container, Col, Row } from 'reactstrap';
 import CharacterSelect from '../../components/CharacterSelect';
+import axios from 'axios';
 
 class Profile extends React.Component {
     constructor(props) {
@@ -36,7 +37,7 @@ class Profile extends React.Component {
         }
     };
 
-    renderNewHeroStats = (event) => {
+    handleHeroChange = (event) => {
         const hero = event.target.innerText;
         // API Call Goes Here //
         // getHeroStats(hero);
@@ -45,6 +46,21 @@ class Profile extends React.Component {
             // heroStats: res.data
             currentHero: hero
         });
+    }
+
+    loadProfile = () => {
+        axios.get(`http://localhost:3001/api/getstats`, {
+        })
+        .then(function (response) {
+          console.log(response);
+          }).catch(function(error) {
+            console.log(error);
+          })       
+      }
+
+    componentDidMount() {
+        // API CALL FOR PROFILE
+        this.loadProfile();
     }
 
     render() {
@@ -59,7 +75,7 @@ class Profile extends React.Component {
                     </Col>
                     <Col id='skill' md='3'>
                         <Row>
-                            <h3 className='skillRating'>Skill Rating: {this.state.skillRating}</h3>
+                            <h3 className='skillRating'>Skill Rating: {this.state.skillRating}<span></span></h3>
                         </Row>
                     </Col>
                     <Col md='3' className='topHero'>
@@ -78,7 +94,7 @@ class Profile extends React.Component {
                     <Col md='2'>Healing: {this.state.lifetimeStats.healing}</Col>
                     <Col md='2'>E/D: {this.state.lifetimeStats.kdr}</Col>
                 </Row>
-                <CharacterSelect currentHero={this.state.currentHero} handler={this.renderNewHeroStats} />
+                <CharacterSelect currentHero={this.state.currentHero} handler={this.handleHeroChange} />
                 <Row className='heroStats'>
                     <Col md='3'>
                         <img src={require(`../../imgs/${this.state.currentHero.toLowerCase().replace('.', '').replace(':', '').replace(' ', '')}.png`)} />

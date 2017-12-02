@@ -16,14 +16,13 @@ class RegisterForm extends React.Component {
             regionOptions: ['Global'],
         };
 
-        this.getUserStats = new GetUserStats();
     }
 
     // Register User
     handleFormSubmit = (event) => {
         event.preventDefault();
-        if (this.state.email && this.state.password && this.state.confirmPassword && this.state.platform && this.state.region && this.state.gamertag) {
-            this.getUserStats.scrapeWebsite(this.state.platform, this.state.region, this.state.gamertag, this.state.email, this.state.password, this.state.confirmPassword);
+        if (this.state.email) {
+            GetUserStats.scrapeWebsite(this.state.platform, this.state.region, this.state.gamertag, this.state.email, this.state.password, this.state.confirmPassword);
         }else {
             console.log(this.state)
             console.log('Please fill out entire form!');
