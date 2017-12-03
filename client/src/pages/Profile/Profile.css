@@ -29,10 +29,6 @@
     padding: 3.5vh 0;
 }
 
-#info .rank {
-    
-}
-
 #info .col-md-3 .row {
     padding: 1.5vh 0;
     margin: 0;
@@ -124,6 +120,23 @@
 
 .raw-hero-stats .col-md-9 video {
     width: 100%;
+}
+
+.displayVideo {
+    position: relative;
+}
+
+.displayVideo video {
+    position:relative;
+    z-index:0;
+}
+
+.displayVideo img {
+    position: absolute;
+    bottom: 5%;
+    right: 2%;
+    z-index: 1;
+    width: 3vw;
 }
 
 @media screen and (max-width: 1500px) {

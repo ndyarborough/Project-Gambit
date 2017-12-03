@@ -3,12 +3,15 @@ import './Profile.css';
 import { Container, Col, Row } from 'reactstrap';
 import CharacterSelect from '../../components/CharacterSelect';
 import axios from 'axios';
+import MuteImg from '../../imgs/mute.png';
+import UnMuteImg from '../../imgs/unmute.png';
 
 class Profile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             muted: false,
+            muteImg: 'unmute',
             gamertag: 'Its that Easey',
             platform: 'XBL',
             icon: 'https://d1u1mce87gyfbn.cloudfront.net/game/unlocks/0x0250000000000317.png',
@@ -63,11 +66,13 @@ class Profile extends React.Component {
         console.log('toggle mute')
         if(this.state.muted === false) {
             this.setState({
-                muted: true
+                muted: true,
+                muteImg: 'mute'
             })
         } else {
             this.setState({
-                muted: false
+                muted: false,
+                muteImg: 'unmute'
             })
         }
     }
@@ -129,8 +134,11 @@ class Profile extends React.Component {
                             </Col>
                             <Col md='9'>
                                 <h2 className='introHeader'>Meet {this.state.currentHero}!</h2>
-                                <video muted={this.state.muted} onClick={this.muteToggle} src={require(`../../imgs/${this.state.currentHero.toLowerCase().replace('.', '').replace(':', '').replace(' ', '')}-intro.webm`)} autoPlay loop>
-                                </video>
+                                <div className='displayVideo'>
+                                    <video muted={this.state.muted} onClick={this.muteToggle} src={require(`../../imgs/${this.state.currentHero.toLowerCase().replace('.', '').replace(':', '').replace(' ', '')}-intro.webm`)} autoPlay loop>
+                                    </video>
+                                    <img id='muted' src={this.state.muted ? MuteImg : UnMuteImg} alt="mute"/>
+                                </div>
                             </Col>
                         </Row>
                             </Col>
