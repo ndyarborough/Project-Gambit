@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 class GetUserStats {
 
   scrapeWebsite(pform, regn, gametg, mail, passwrd, confirmpasswrd) {
