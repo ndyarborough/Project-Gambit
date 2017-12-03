@@ -1,5 +1,6 @@
 // Dependencies
-var express = require("express");
+const express = require("express");
+const app = express();
 var mongoose = require("mongoose");
 var request = require("request");
 var cheerio = require("cheerio");
@@ -12,13 +13,28 @@ var cookieSession = require('cookie-session');
 var cookieParser = require('cookie-parser');
 var MongoStore = require('connect-mongo')(session);
 var passportSetup = require('./config/passport-route');
-
+// Socket Dependencies
+var http = require('http');
+var server = http.createServer(app);
+var io = require('socket.io').listen(server);
 // Routes
 const routes = require("./controllers/router");
 
 // Initialize Express
-const app = express();
 const PORT = process.env.PORT || 3001;
+
+// Socket Plugin
+io.on('connection', function (socket) {
+  io.emit('this', { will: 'be received by everyone'});
+
+  socket.on('private message', function (from, msg) {
+    console.log('I received a private message by ', from, ' saying ', msg);
+  });
+
+  socket.on('disconnect', function () {
+    io.emit('user disconnected');
+  });
+});
 
 // Use body parser with our app
 app.use(bodyParser.json());

@@ -1,0 +1,15 @@
+.categorySelector {
+    padding: 3vh 0;
+}
+
+.categories {
+    background:#218ffe !important;
+}
+
+.categories:hover {
+    background: #f99e1a !important;
+}
+
+.selectedCategory {
+    background: #f99e1a !important;
+}

@@ -1,38 +1,25 @@
 #search {
-    background: url('../../imgs/overwatch-bg.jpg');
-    background-size: cover;
-    height: 92.5vh;
-    text-align: center;
-}
-
-#search .col-md-3 {
-    margin: 0 auto;
+    min-height: 93vh;
     height: 100%;
-    padding: 40vh 0 0 4vw;
+    background: url('../../imgs/winston-rage.jpg');
+    background-size: cover;
+    font-family: overwatch;
     text-align: center;
 }
 
-#search .col-md-3 button {
-    margin: 0 1vw;
-    float: left;
+#characters {
+    margin: 0 auto;
+    padding: 5vh 10vw;
+    width: 90%;
+    background: rgba(0, 0, 0, 0.5);
+    text-align: center;    
 }
 
-.dropdown {
-    padding: 0
-}
-#findTeam {
-    background: #218ffe;
-    border: black solid 1px;
-    color: #000;
-    float: left;
-    padding: 1vh 1vw;
-    border-radius: 5px;
+.hovering {
+    background: #aaa !important;
 }
 
-#findTeam:hover {
-    background: #2567aa
-}    
+.chosen {
+    background: #fff !important;
+}
 
-#findTeam:active {
-    background: #51a8ff
-}    

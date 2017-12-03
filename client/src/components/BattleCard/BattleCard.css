@@ -1,16 +1,28 @@
 .battleCard {
-    border: #eee solid 1px;
-    padding: 0;
+    border: #eee solid 1px;    
+}
+
+.battleCard:hover {
+    background:#f99e1a !important;
 }
 
 .cardName {
-    margin: 0;
+    margin: 0 auto;
     color: #eee;
+    font-size: 2vw;
 }
-
 .characterPic {
     color: #eee;
     width: 100%;
     margin: 0;
-    padding: 0;
+}
+
+.selected {
+    color: #000; 
+    background:#218ffe;
+    border: rgb(179, 179, 179) solid 1px;
+}
+
+.selected:hover {
+    background: #218ffe !important;
 }

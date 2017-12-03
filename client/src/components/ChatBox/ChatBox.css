@@ -1,3 +1,39 @@
 .chatBoxText {
     color: #eee;
 }
+
+.chatBox {
+    position: relative;
+}
+
+.chatBox form {
+     background: #000;
+     padding: 3px;
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     width: 100%;
+ }
+.chatBox form input {
+     border: 0;
+     padding: 10px;
+     width: 90%;
+     margin-right: .5%;
+ }
+.chatBox form button {
+     width: 9%;
+     background: rgb(130, 224, 255);
+     border: none;
+     padding: 10px;
+ }
+.chatBox #messages {
+     list-style-type: none;
+     margin: 0;
+     padding: 0;
+ }
+.chatBox #messages li {
+     padding: 5px 10px;
+ }
+.chatBox #messages li:nth-child(odd) {
+     background: #eee;
+ }

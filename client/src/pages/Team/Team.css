@@ -13,6 +13,10 @@
     background: rgba(0, 0, 0, 0.5);
 }
 
+#team-battle .battleCard:hover {
+    background: transparent !important;
+}
+
 #chat-box {
     margin: 0 auto;
     width: 70%;
