@@ -8,6 +8,7 @@ class Profile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            muted: false,
             gamertag: 'Its that Easey',
             platform: 'XBL',
             icon: 'https://d1u1mce87gyfbn.cloudfront.net/game/unlocks/0x0250000000000317.png',
@@ -57,6 +58,19 @@ class Profile extends React.Component {
             console.log(error);
           })       
       }
+
+    muteToggle = () => {
+        console.log('toggle mute')
+        if(this.state.muted === false) {
+            this.setState({
+                muted: true
+            })
+        } else {
+            this.setState({
+                muted: false
+            })
+        }
+    }
 
     componentDidMount() {
         // API CALL FOR PROFILE
@@ -115,7 +129,7 @@ class Profile extends React.Component {
                             </Col>
                             <Col md='9'>
                                 <h2 className='introHeader'>Meet {this.state.currentHero}!</h2>
-                                <video src={require(`../../imgs/${this.state.currentHero.toLowerCase().replace('.', '').replace(':', '').replace(' ', '')}-intro.webm`)} autoPlay loop>
+                                <video muted={this.state.muted} onClick={this.muteToggle} src={require(`../../imgs/${this.state.currentHero.toLowerCase().replace('.', '').replace(':', '').replace(' ', '')}-intro.webm`)} autoPlay loop>
                                 </video>
                             </Col>
                         </Row>
