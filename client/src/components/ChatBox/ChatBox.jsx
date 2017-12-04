@@ -24,7 +24,7 @@ class ChatBox extends React.Component {
         return (
             <Col className='chatBox' md='12'>
                 <ul id="messages"></ul>
-                <form action="">
+                <form>
                     <input value={this.state.message} onChange={this.handleChange} id="m" autocomplete="off" /><button onClick={this.handleSubmit}>Send</button>
                 </form>
             </Col>

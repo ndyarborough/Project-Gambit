@@ -20,6 +20,8 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <script src='http://code.jquery.com/jquery-latest.min.js'></script>
+    <script src="/socket.io/socket.io.js"></script>    
   </head>
   <body>
     <noscript>
@@ -36,20 +38,19 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
-      $(function () {
-        var socket = io();
-        $('form').submit(function(){
-      socket.emit('chat message', $('#m').val());
-      $('#m').val('');
-      return false;
-    });
-    socket.on('chat message', function(msg){
-      $('#messages').append($('<li>').text(msg));
-    });
-      });
-    </script>
+        $(function() {
+           const socket = io.connect();
+          //  const $messageForm = $('#messageForm');
+          //  const $message = $('#message');
+          //  const $chat = $('#chat');
+   
+          //  $messageForm.submit(function(event) {
+          //    event.preventDevault();
+          //    console.log('Sumbitted')
+          //  })
+   
+        });
+       </script>
   </body>
 </html>

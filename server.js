@@ -1,6 +1,12 @@
 // Dependencies
 const express = require("express");
 const app = express();
+const server = require('http').createServer(app);
+const io = require('socket.io').listen(server);
+
+const connections = [];
+const users = [];
+
 var mongoose = require("mongoose");
 var request = require("request");
 var cheerio = require("cheerio");
@@ -13,28 +19,24 @@ var cookieSession = require('cookie-session');
 var cookieParser = require('cookie-parser');
 var MongoStore = require('connect-mongo')(session);
 var passportSetup = require('./config/passport-route');
-// Socket Dependencies
-var http = require('http');
-var server = http.createServer(app);
-var io = require('socket.io').listen(server);
+
 // Routes
 const routes = require("./controllers/router");
 
 // Initialize Express
 const PORT = process.env.PORT || 3001;
 
-// Socket Plugin
-io.on('connection', function (socket) {
-  io.emit('this', { will: 'be received by everyone'});
+// ===== Socket Plugin =========
+io.sockets.on('connection', function(socket) {
+  connections.push(socket);
+  console.log(`Connected: ${connections.length} sockets connected`)
 
-  socket.on('private message', function (from, msg) {
-    console.log('I received a private message by ', from, ' saying ', msg);
+  // Disconnect
+  socket.on('disconnect', function(data) {
+    connections.splice(connections.indexOf(socket), 1);
+    console.log(`Disconnected: ${connections.length} sockets connected`);  
   });
-
-  socket.on('disconnect', function () {
-    io.emit('user disconnected');
   });
-});
 
 // Use body parser with our app
 app.use(bodyParser.json());
@@ -89,6 +91,6 @@ db.once("open", () => {
 
 // Listen on port 
 // ===================
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
 });
