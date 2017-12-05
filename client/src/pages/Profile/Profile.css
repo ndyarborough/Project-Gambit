@@ -5,7 +5,7 @@
     background-size: cover;
     font-family: overwatch;
     text-align: center;
-    padding: 1.3vh 0 15vh 0;
+    padding: 0 0 15vh 0;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;        
 }
 
@@ -15,6 +15,7 @@
     height: 25vh;
     margin: 0;
     color: rgb(238, 238, 238);
+    background: linear-gradient( rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) );  
 }
 
 #info .col-md-1 {
