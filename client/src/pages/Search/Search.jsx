@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row } from 'reactstrap';
+import { Col, Row, Button } from 'reactstrap';
 import BattleCard from '../../components/BattleCard/BattleCard.jsx';
 import CategorySelect from '../../components/CategorySelect/CategorySelect.jsx';
 import './Search.css';
@@ -280,6 +280,11 @@ class Search extends React.Component {
         }
     }
 
+    handleSearch = () => {
+        const selection = this.state.selectedHero;
+        console.log(this.state.selectedHero);
+    }
+
     render() {
 
         return (
@@ -303,6 +308,9 @@ class Search extends React.Component {
                         })
                     }
                 </Row>
+                <Button id='searchButton' onClick={this.handleSearch} >
+                    Search
+                </Button>
             </div>
         )
     }
