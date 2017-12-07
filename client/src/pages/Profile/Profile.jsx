@@ -17,7 +17,7 @@ class Profile extends React.Component {
             icon: 'https://d1u1mce87gyfbn.cloudfront.net/game/unlocks/0x0250000000000317.png',
             skillRating: 4329,
             tier: 'http://blzgdapipro-a.akamaihd.net/game/rank-icons/season-2/rank-7.png',
-            currentHero: 'genji',
+            currentHero: 'doomfist',
             lifetimeStats: {
                 gamesPlayed: 212,
                 wins: 153,

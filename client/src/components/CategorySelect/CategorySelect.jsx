@@ -12,7 +12,7 @@ class CategorySelect extends React.Component {
 
     handleNewCategory = (i) => {
         console.log(this.props.currentCategory + ':' + this.props.categories[i].toLowerCase())
-        if (this.props.currentCategory == this.props.categories[i].toLowerCase()) {
+        if (this.props.currentCategory === this.props.categories[i].toLowerCase()) {
             return 'selectedCategory';
         } else {
             return '';
