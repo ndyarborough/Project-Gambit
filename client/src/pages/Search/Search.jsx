@@ -280,6 +280,11 @@ class Search extends React.Component {
         }
     }
 
+    handleSearch = () => {
+        const selection = this.state.selectedHero;
+        console.log(this.state.selectedHero);
+    }
+
     render() {
 
         return (
@@ -303,6 +308,9 @@ class Search extends React.Component {
                         })
                     }
                 </Row>
+                <Button id='searchButton' onClick={this.handleSearch} >
+                    Search
+                </Button>
             </div>
         )
     }
