@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Col, Row } from 'reactstrap';
+import { Container, Col, Row, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './RegisterForm.css';
 import { createNewUser } from '../../api';
@@ -129,7 +129,9 @@ class RegisterForm extends React.Component {
                                    }
                                 </select>
                                 <br />
-                                <Link to='login' onClick={this.handleFormSubmit}>Register</Link>
+                                <Link to='login' onClick={this.handleFormSubmit}>
+                                    <Button color="primary">Register</Button>
+                                </Link>
                             </form>
                         </Col>
                     </Row>
