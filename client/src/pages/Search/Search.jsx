@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row } from 'reactstrap';
+import { Row } from 'reactstrap';
 import BattleCard from '../../components/BattleCard/BattleCard.jsx';
 import CategorySelect from '../../components/CategorySelect/CategorySelect.jsx';
 import './Search.css';
@@ -249,20 +249,20 @@ class Search extends React.Component {
         const chosenCategory = event.target.innerText.toLowerCase();
         let newCharacters = [];
         switch (chosenCategory) {
-            case 'all':
-            newCharacters = this.state.Heroes;
-                break;
             case 'offense':
-            newCharacters = this.state.Heroes.filter(Heroes => Heroes.status == "offensive");
+            newCharacters = this.state.Heroes.filter(Heroes => Heroes.status === "offensive");
                 break;
             case 'defense':
-                newCharacters = this.state.Heroes.filter(Heroes => Heroes.status == "defense");
+                newCharacters = this.state.Heroes.filter(Heroes => Heroes.status === "defense");
                 break;
             case 'tank':
-                newCharacters = this.state.Heroes.filter(Heroes => Heroes.status == "tank");
+                newCharacters = this.state.Heroes.filter(Heroes => Heroes.status === "tank");
                 break;
             case 'support':
-                newCharacters = this.state.Heroes.filter(Heroes => Heroes.status == "support");
+                newCharacters = this.state.Heroes.filter(Heroes => Heroes.status === "support");
+                break;
+            default:
+            newCharacters = this.state.Heroes;
                 break;
         }
         this.setState({

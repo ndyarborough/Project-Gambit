@@ -2,7 +2,8 @@ import React from 'react';
 import { Container, Col, Row } from 'reactstrap';
 import './LoginForm.css';
 import logo from '../../imgs/Project-Gambit-Logo.png';
-import GetUserStats from '../../components/api-routes'
+import { Link } from 'react-router-dom';
+import { login } from '../../api';
 
 class LoginForm extends React.Component {
 
@@ -12,8 +13,6 @@ class LoginForm extends React.Component {
             email: '',
             password: ''
         };
-
-        this.userLogin = new GetUserStats();
     }
 
     // Handles updating component state when the user types into the input field
@@ -25,10 +24,10 @@ class LoginForm extends React.Component {
     };
 
     handleFormSubmit = event => {
-        event.preventDefault();
+        // event.preventDefault();
         if (this.state.email && this.state.password) {
             // Login User
-            this.userLogin.login(this.state.email, this.state.password);
+            login(this.state.email, this.state.password);
         } else {
             console.log('Please fill out entire form!')
         }
@@ -48,7 +47,7 @@ class LoginForm extends React.Component {
                                 <input name='email' onChange={this.handleInputChange} type="email" className="form-control" id="exampleInputEmail1" placeholder="Enter email" />
                                 <label htmlFor="exampleInputPassword1">Password </label>
                                 <input name='password' onChange={this.handleInputChange} type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
-                                <button onClick={this.handleFormSubmit} type="submit" className="btn btn-sm btn-primary">Sign in</button>
+                            <Link to='/profile' onClick={this.handleFormSubmit}>Sign in</Link>
                             </div>
                         </form>
                     </Col>

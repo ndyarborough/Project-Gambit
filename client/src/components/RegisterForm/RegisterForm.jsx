@@ -1,7 +1,8 @@
 import React from 'react';
 import { Container, Col, Row } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import './RegisterForm.css';
-import GetUserStats from '../../components/api-routes';
+import { createNewUser } from '../../api';
 
 class RegisterForm extends React.Component {
     constructor(props) {
@@ -15,14 +16,13 @@ class RegisterForm extends React.Component {
             gamertag: '',
             regionOptions: ['Global'],
         };
-        this.GetUserStats = new GetUserStats();
     }
 
     // Register User
     handleFormSubmit = (event) => {
-        event.preventDefault();
+        // event.preventDefault();
         if (this.state.email) {
-            this.GetUserStats.scrapeWebsite(this.state.platform, this.state.region, this.state.gamertag, this.state.email, this.state.password, this.state.confirmPassword);
+            createNewUser(this.state.platform, this.state.region, this.state.gamertag, this.state.email, this.state.password, this.state.confirmPassword);
         }else {
             console.log(this.state)
             console.log('Please fill out entire form!');
@@ -129,7 +129,7 @@ class RegisterForm extends React.Component {
                                    }
                                 </select>
                                 <br />
-                                <button onClick={this.handleFormSubmit} type="submit" className="btn btn-primary register-button"><i className="fa fa-user-plus"></i> Register</button>
+                                <Link to='login' onClick={this.handleFormSubmit}>Register</Link>
                             </form>
                         </Col>
                     </Row>

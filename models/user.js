@@ -10,6 +10,10 @@ var userSchema = new Schema({
     unique: true
   },
 
+  selectedHero: {
+    type: String
+  },
+
   online: {
     type: Boolean,
     default: false

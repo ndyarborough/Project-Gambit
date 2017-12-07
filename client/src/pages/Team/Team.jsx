@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row } from 'reactstrap';
+import { Row } from 'reactstrap';
 import BattleCard from '../../components/BattleCard/BattleCard.jsx';
 import './Team.css';
 import ChatBox from '../../components/ChatBox/ChatBox.jsx';
@@ -46,7 +46,8 @@ class Team extends React.Component {
                 {
                  // Create a card for each team member
                  this.state.team.map((item, i) => {
-                        return <BattleCard  
+                        return <BattleCard
+                                    key={this.state.team[i].character} 
                                     columnSize='2'
                                     character={this.state.team[i].character} 
                                     username={this.state.team[i].username}

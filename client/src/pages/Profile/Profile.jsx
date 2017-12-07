@@ -1,8 +1,7 @@
 import React from 'react';
 import './Profile.css';
-import { Container, Col, Row } from 'reactstrap';
+import { Col, Row } from 'reactstrap';
 import CharacterSelect from '../../components/CharacterSelect';
-import axios from 'axios';
 import MuteImg from '../../imgs/mute.png';
 import UnMuteImg from '../../imgs/unmute.png';
 
@@ -52,16 +51,6 @@ class Profile extends React.Component {
         });
     }
 
-    loadProfile = () => {
-        axios.get(`http://localhost:3001/api/getstats`, {
-        })
-        .then(function (response) {
-          console.log(response);
-          }).catch(function(error) {
-            console.log(error);
-          })       
-      }
-
     muteToggle = () => {
         console.log('toggle mute')
         if(this.state.muted === false) {
@@ -77,17 +66,12 @@ class Profile extends React.Component {
         }
     }
 
-    componentDidMount() {
-        // API CALL FOR PROFILE
-        this.loadProfile();
-    }
-
     render() {
         return (
             <div id='profilePage'>
                 <Row id='info'>
                     <Col md='1'>
-                        <img className='profileImgs' src={this.state.icon} />
+                        <img alt='icon' className='profileImgs' src={this.state.icon} />
                     </Col>
                     <Col md='4' className='accountInfo'>
                         <h1 className='username'>{this.state.gamertag} <small>on {this.state.platform}</small></h1>
@@ -101,7 +85,7 @@ class Profile extends React.Component {
                         <h1 className='bestHeader'>Top Hero: Reaper</h1>
                     </Col>
                     <Col md='1'>
-                        <img className='profileImgs bestHero' src='https://cdn.arstechnica.net/wp-content/uploads/2016/06/overreaper.jpg' />
+                        <img alt='best hero' className='profileImgs bestHero' src='https://cdn.arstechnica.net/wp-content/uploads/2016/06/overreaper.jpg' />
                     </Col>
                 </Row>
                 <h1 className='header'>Lifetime Stats</h1>
@@ -116,7 +100,7 @@ class Profile extends React.Component {
                 <CharacterSelect currentHero={this.state.currentHero} handler={this.handleHeroChange} />
                 <Row className='heroStats'>
                     <Col md='3'>
-                        <img src={require(`../../imgs/${this.state.currentHero.toLowerCase().replace('.', '').replace(':', '').replace(' ', '')}.png`)} />
+                        <img alt={`../../imgs/${this.state.currentHero.toLowerCase().replace('.', '').replace(':', '').replace(' ', '')}.png`} src={require(`../../imgs/${this.state.currentHero.toLowerCase().replace('.', '').replace(':', '').replace(' ', '')}.png`)} />
                     </Col>
                     <Col md='9' className='raw-hero-stats'>
                         <Row>

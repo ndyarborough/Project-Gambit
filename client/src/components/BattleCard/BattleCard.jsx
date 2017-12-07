@@ -43,7 +43,7 @@ class BattleCard extends React.Component {
         return (
             <Col onClick={this.props.clickHandler} id={this.props.character} className={`${this.props.handleSelection} battleCard`} md={this.props.columnSize}>
                 <h4  className='cardName'>{this.props.character}</h4>
-                <img  className='characterPic' src={require(`../../imgs/${this.props.character}.png`)} />
+                <img alt={`../../imgs/${this.props.character}.png`} className='characterPic' src={require(`../../imgs/${this.props.character}.png`)} />
             </Col>
         )
     }

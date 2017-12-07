@@ -8,6 +8,10 @@ var roomSchema = new Schema({
 		default: false
 	},
 
+	platform: {
+		type: String
+	},
+
 	occupants: [{
 		type: Schema.Types.ObjectId, 
 		ref: 'User'
