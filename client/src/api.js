@@ -54,5 +54,12 @@ const login = (mail, passwrd) => {
     })
 }
 
+const getUserStats = (cookie) => {
+  axios.get(`http://localhost:3001/api/getuser/${cookie}`, {
+    })
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+}
+
 
 export { createNewUser, login };

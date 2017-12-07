@@ -27,7 +27,6 @@
 #searchButton {
     display: block;
     margin: 0 auto 2vh auto;
-    /* padding: 1% 2%; */
 }
 
 #searchButton:hover {

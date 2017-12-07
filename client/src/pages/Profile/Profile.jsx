@@ -4,6 +4,7 @@ import { Col, Row } from 'reactstrap';
 import CharacterSelect from '../../components/CharacterSelect';
 import MuteImg from '../../imgs/mute.png';
 import UnMuteImg from '../../imgs/unmute.png';
+import { getUserStats } from '../../api';
 
 class Profile extends React.Component {
     constructor(props) {
@@ -39,6 +40,10 @@ class Profile extends React.Component {
             },
         }
     };
+
+    componentWillMount = () => {
+
+    }
 
     handleHeroChange = (event) => {
         const hero = event.target.innerText;
