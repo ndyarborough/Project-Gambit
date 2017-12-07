@@ -2,9 +2,9 @@ import React from 'react';
 import { Container, Col, Row, Button } from 'reactstrap';
 import './LoginForm.css';
 import logo from '../../imgs/Project-Gambit-Logo.png';
+
 import { Link } from 'react-router-dom';
 import { login } from '../../api';
-
 class LoginForm extends React.Component {
 
     constructor(props) {
@@ -13,7 +13,8 @@ class LoginForm extends React.Component {
             email: '',
             password: ''
         };
-    }
+
+}
 
     // Handles updating component state when the user types into the input field
     handleInputChange = event => {

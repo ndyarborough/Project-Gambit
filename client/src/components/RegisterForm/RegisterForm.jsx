@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './RegisterForm.css';
 import { createNewUser } from '../../api';
 
+
 class RegisterForm extends React.Component {
     constructor(props) {
         super(props);

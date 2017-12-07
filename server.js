@@ -1,3 +1,6 @@
+
+
+
 // Dependencies
 var express = require("express");
 var mongoose = require("mongoose");
@@ -17,12 +20,69 @@ const routes = require("./controllers/router");
 
 // Initialize Express
 const app = express();
+const server = require('http').createServer(app);
+const io = require('socket.io').listen(server);
 const PORT = process.env.PORT || 3001;
+
 
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 
 // Express Validator
 app.use(expressValidator());
+
+// ===== Socket Plugin =========
+// io.on('connection', function(socket) {
+//   connections.push(socket);
+//   console.log(`Connected: ${connections.length} sockets connected`)
+//   socket.on('sendingmessage', (messages) => {
+//        io.emit('message', messages);
+//        console.log('sent message')
+//   });
+
+//    // Disconnect
+//   socket.on('disconnect', function(data) {
+//     connections.splice(connections.indexOf(socket), 1);
+//     console.log(`Disconnected: ${connections.length} sockets connected`);  
+//   });
+// });
+io.on('connection', (socket) => {
+    console.log(socket.id);
+
+    socket.on('SEND_MESSAGE', function(data){
+        io.emit('RECEIVE_MESSAGE', data);
+    })
+});
+  // io.on('connection', (client) => {
+  //   client.on('subscribeToTimer', (interval) => {
+  //     console.log('client is subscribing to timer with interval ', interval);
+  //     setInterval(() => {
+  //       client.emit('timer', new Date());
+  //     }, interval)
+  //   });
+  //   // client.on('sendMessage', (data) => {
+  //   //   console.log('client is submitting a message!');
+  //     client.emit('chat message', {
+  //                               message: 'this is a message seraj',
+  //                               username: 'seraj222'
+  //                           } )
+    
+  // });
+
+// io.on('connection', function(socket) {
+//   connections.push(socket);
+//   console.log(`Connected: ${connections.length} sockets connected`)
+//   socket.on('chat message', function(msg) {
+//     io.emit('chat message', msg);
+//   });
+//   socket.on('disconnect', function() {
+//      connections.splice(connections.indexOf(socket), 1);
+//     console.log(`Disconnected: ${connections.length} sockets connected`);  
+ 
+//   })
+// })
+
+
+
 
 // Use body parser with our app
 app.use(bodyParser.json());
@@ -72,7 +132,7 @@ db.once("open", () => {
 
 // Listen on port 
 // ===================
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
 });
 
