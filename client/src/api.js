@@ -1,65 +1,83 @@
 import axios from 'axios';
 
-const createNewUser = (pform, regn, gametg, mail, passwrd, confirmpasswrd) => {
-    // Checks to see if the player profile exists
+const registerUser = (pform, regn, gametg, mail, passwrd, confirmpasswrd) => {
+    console.log('registerUser')
     axios.get(`http://localhost:3001/api/check/${pform}/${regn}/${gametg}`, {
     })
-    .then(response => {
-    	console.log('Successfully Registered!')
-    // Register user statistics the db
-      axios.post('http://localhost:3001/api/register', {
-        platform: pform,
-        region: regn,
-        gamerTag: gametg,
-        email: mail,
-        password: passwrd,
-        confirmpassword: confirmpasswrd
-      })
-      .then(function(res) {
-        console.log(res);
-      })
-      .catch(function(error) {
-        console.log(error);
-      })
-    })
-    .catch(function (error) {
-      console.log(error);
-      alert('GamerTag not found. Please Try Again');
-    });
+        .then(function (response) {
+            console.log(response);
+            axios.post('http://localhost:3001/api/register', {
+                platform: pform,
+                region: regn,
+                gamerTag: gametg,
+                email: mail,
+                password: passwrd,
+                confirmpassword: confirmpasswrd
+            }).then(function (res) {
+                console.log(res);
+            }).catch(function (error) {
+                console.log(error);
+            })
+        })
+        .catch(function (error) {
+            console.log(error);
+            alert('GamerTag not found. Please Try Again');
+        });
 }
 
 const login = (mail, passwrd) => {
-	// First, Update Account Statistics
+    console.log('login')
     axios.get(`http://localhost:3001/api/updatestats/${mail}`, {
     })
-    .then(function(response) {
-    // Then attempt a user login
-      axios.post('http://localhost:3001/api/login', {
-        email: mail,
-        password: passwrd
-      })
-      .then(function(res) {
-        console.log(res);
-        // Sets up a validation token on the frontend
-        localStorage.setItem('token', res.data.token);
-      })
-      .catch(function(err) {
-      	console.log('There was a problem logging you in...')
-        console.log(err);
-      })
-    })
-    .catch(function(error) {
-    	console.log('There was an issue updating your profile...')
-    	console.log(error);
-    })
+        .then(function (response) {
+            console.log(response)
+            axios.post('http://localhost:3001/api/login', {
+                email: mail,
+                password: passwrd
+            }).then(function (res) {
+                console.log(res);
+            }).catch(function (err) {
+                console.log(err);
+            })
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
 }
 
-const getUserStats = (cookie) => {
-  axios.get(`http://localhost:3001/api/getuser/${cookie}`, {
-    })
-    .then(res => console.log(res))
+const getUserStats = (email) => {
+    console.log('getUserStats')
+    axios.get(`/api/getuserstats/${email}`)
+    .then(res => {
+        // console.log(res)
+        const obj = {
+            gamertag: res.data.gamerTag,
+            platform: res.data.platform,
+            icon: res.data.icon,
+            skillRating: res.data.skillRating,
+            tier: res.data.tier,
+            lifetimeStats: {
+                gamesPlayed: res.data.gamesPlayed,
+                wins: res.data.wins,
+                kdr: res.data.kdr,
+                healing: res.data.healing,
+                damage: res.data.healing,
+                eliminations: res.data.eliminations,
+            }
+        };
+        return obj;
+    })        
     .catch(err => console.log(err));
 }
 
+const getHeroStats = (userEmail) => {
+    console.log('getHeroStats')
+    axios.get(`/api/getherostats/${userEmail}`)
+        .then(res => {
+            console.log(res);
+        })
+        .catch(err => console.log(err));
+}
 
-export { createNewUser, login };
+
+export { registerUser, login, getUserStats, getHeroStats };

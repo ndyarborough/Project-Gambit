@@ -1,10 +1,10 @@
 import React from 'react';
-import { Container, Col, Row, Button } from 'reactstrap';
+import { Container, Col, Row } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import './LoginForm.css';
 import logo from '../../imgs/Project-Gambit-Logo.png';
-
-import { Link } from 'react-router-dom';
 import { login } from '../../api';
+
 class LoginForm extends React.Component {
 
     constructor(props) {
@@ -13,8 +13,7 @@ class LoginForm extends React.Component {
             email: '',
             password: ''
         };
-
-}
+    }
 
     // Handles updating component state when the user types into the input field
     handleInputChange = event => {
@@ -30,9 +29,10 @@ class LoginForm extends React.Component {
             // Login User
             login(this.state.email, this.state.password);
         } else {
-            console.log('Please fill out entire form!')
+            console.log('Please fill out entire form!');
         }
     };
+
     render() {
         return (
         <Container fluid>

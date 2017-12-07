@@ -227,24 +227,24 @@ class Search extends React.Component {
         }
     };
 
+    // Select a hero
     handleClick = (event) => {
         let id = event.target.id;
         if (id === '') {
             id = event.target.parentElement.id;
-            console.log('child element: ' + id)
             this.setState({
                 selectedHero: id,
             });
             // event.target.parentElement.style.background = 'red'
         } else {
             this.setState({
-                selectedHero: id,
+                selectedHero: id,   
             });
-            console.log("parent element: " + id)
             // event.target.style.background = 'red'
         }
     }
 
+    // Select a Category
     handleCategorySelection = (event) => {
         const chosenCategory = event.target.innerText.toLowerCase();
         let newCharacters = [];

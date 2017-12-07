@@ -39,9 +39,7 @@ class RegisterForm extends React.Component {
             console.log('handleRegionChange')
             console.log(value)
             this.handleRegionChange(value);            
-        }
-        console.log(this.state.regionOptions)            
-        
+        }        
     };
 
     // Changing state of region dropdown

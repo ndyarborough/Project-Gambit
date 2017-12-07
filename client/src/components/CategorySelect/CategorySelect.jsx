@@ -5,7 +5,6 @@ import './CategorySelect.css';
 class CategorySelect extends React.Component {
 
     handleNewCategory = (i) => {
-        console.log(this.props.currentCategory + ':' + this.props.categories[i].toLowerCase())
         if (this.props.currentCategory === this.props.categories[i].toLowerCase()) {
             return 'selectedCategory';
         } else {
@@ -22,7 +21,9 @@ class CategorySelect extends React.Component {
                             key={this.props.categories[i]}
                             className={`categories ${this.handleNewCategory(i)}`}
                             id={`${this.props.categories[i].toLowerCase()}-category`}
-                            onClick={this.props.handleCategory} >{this.props.categories[i]}</Button>
+                            onClick={this.props.handleCategory}
+                            key={this.props.categories[i]}>
+                            {this.props.categories[i]}</Button>
                     })
                 }
             </ButtonGroup>

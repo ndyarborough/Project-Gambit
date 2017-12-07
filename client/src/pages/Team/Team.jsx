@@ -51,6 +51,7 @@ class Team extends React.Component {
                                     columnSize='2'
                                     character={this.state.team[i].character} 
                                     username={this.state.team[i].username}
+                                    key={this.state.username}
                                 />})
                 }
 

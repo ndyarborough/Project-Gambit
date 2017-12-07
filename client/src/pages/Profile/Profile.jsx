@@ -79,7 +79,7 @@ class Profile extends React.Component {
                         <img alt='icon' className='profileImgs' src={this.state.icon} />
                     </Col>
                     <Col md='4' className='accountInfo'>
-                        <h1 className='username'>{this.state.gamertag} <small>on {this.state.platform}</small></h1>
+                        <h1 className='username'>{this.state.email} <small>on {this.state.platform}</small></h1>
                     </Col>
                     <Col id='skill' md='3'>
                         <Row>
@@ -95,12 +95,12 @@ class Profile extends React.Component {
                 </Row>
                 <h1 className='header'>Lifetime Stats</h1>
                 <Row className='lifetime'>
-                    <Col md='2'>Games Played: {this.state.lifetimeStats.gamesPlayed}</Col>
-                    <Col md='2'>Wins: {this.state.lifetimeStats.wins}</Col>
-                    <Col md='2'>Eliminations: {this.state.lifetimeStats.eliminations}</Col>
-                    <Col md='2'>Damage: {this.state.lifetimeStats.damage}</Col>
-                    <Col md='2'>Healing: {this.state.lifetimeStats.healing}</Col>
-                    <Col md='2'>E/D: {this.state.lifetimeStats.kdr}</Col>
+                    <Col md='2' sm='4'>Games Played: {this.state.lifetimeStats.gamesPlayed}</Col>
+                    <Col md='2' sm='4'>Wins: {this.state.lifetimeStats.wins}</Col>
+                    <Col md='2' sm='4'>Eliminations: {this.state.lifetimeStats.eliminations}</Col>
+                    <Col md='2' sm='4'>Damage: {this.state.lifetimeStats.damage}</Col>
+                    <Col md='2' sm='4'>Healing: {this.state.lifetimeStats.healing}</Col>
+                    <Col md='2' sm='4'>E/D: {this.state.lifetimeStats.kdr}</Col>
                 </Row>
                 <CharacterSelect currentHero={this.state.currentHero} handler={this.handleHeroChange} />
                 <Row className='heroStats'>
