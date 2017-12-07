@@ -40,14 +40,14 @@ class App extends React.Component {
               default:
         this.setState({ navLinks: ['Register', 'Login']})
     }
+    console.log(this.state.currentPage)
+    console.log(this.state.navLinks)
   }
 
   changePage = (event) => {
     const page = event.target.innerText.toLowerCase();
     this.setState({ currentPage: page});
-    
-
-
+    console.log('Page: ' + page);
   }
 
 

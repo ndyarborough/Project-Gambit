@@ -5,8 +5,9 @@
     height: 91.5vh;
 }
 
-@media only screen and (max-width: 1400px) {
-    #login {
-        padding: 15vh 0;
-    }
+@media only screen and (min-width: 1400px) {
+
+#login {
+    height: 93vh;
+}
 }

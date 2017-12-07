@@ -44,8 +44,8 @@ img {
     font-size: 2rem !important;
 }
 
-@media only screen and (max-width: 1400px) {
+@media only screen and (min-width: 1400px) {
     img {
-        margin-top: 17vh;
+        margin: 10vh 0;
     }
 }    

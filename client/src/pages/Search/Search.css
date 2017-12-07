@@ -9,9 +9,10 @@
 
 #characters {
     margin: 0 auto;
-    padding: 5vh 10vw;
+    border-radius: 7px;
+    padding: 0 2vw;
     width: 90%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.8);
     text-align: center;    
 }
 
@@ -24,10 +25,26 @@
 }
 
 #searchButton {
-    margin: 5vh 0;
-    padding: 1% 2%;
+    display: block;
+    margin: 0 auto 2vh auto;
+    /* padding: 1% 2%; */
 }
 
 #searchButton:hover {
     background: #218ffe !important;
+}
+
+#search .search-header {
+    width: 100%;
+    margin: 1.5vh auto;
+}
+
+#search h2.white {
+    color: #218ffe;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#search .bottom-button {
+    margin: 2vh auto;
 }

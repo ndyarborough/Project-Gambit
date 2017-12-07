@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Row } from 'reactstrap';
+import { Col, Button, Row } from 'reactstrap';
 import BattleCard from '../../components/BattleCard/BattleCard.jsx';
 import CategorySelect from '../../components/CategorySelect/CategorySelect.jsx';
 import './Search.css';
@@ -282,7 +282,7 @@ class Search extends React.Component {
 
     handleSearch = () => {
         const selection = this.state.selectedHero;
-        console.log(this.state.selectedHero);
+        console.log(selection);
     }
 
     render() {
@@ -293,8 +293,14 @@ class Search extends React.Component {
                     currentCategory={this.state.currentCategory}
                     handleCategory={this.handleCategorySelection}
                     categories={this.state.categories}
-                 />
+                />
+                <Button id='searchButton' onClick={this.handleSearch} >
+                    Search
+                </Button>
                 <Row id='characters'>
+                    <Row className='search-header'>    
+                        <h2 className='white'>Pick a hero from any category</h2>
+                    </Row>
                     {
                         // Create a card for each character
                         this.state.displayHeroes.map((item, i) => {
@@ -308,7 +314,7 @@ class Search extends React.Component {
                         })
                     }
                 </Row>
-                <Button id='searchButton' onClick={this.handleSearch} >
+                <Button className='bottom-button' id='searchButton' onClick={this.handleSearch} >
                     Search
                 </Button>
             </div>
