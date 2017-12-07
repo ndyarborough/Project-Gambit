@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Col, Row } from 'reactstrap';
+import { Container, Col, Row, Button } from 'reactstrap';
 import './LoginForm.css';
 import logo from '../../imgs/Project-Gambit-Logo.png';
 import { Link } from 'react-router-dom';
@@ -47,7 +47,9 @@ class LoginForm extends React.Component {
                                 <input name='email' onChange={this.handleInputChange} type="email" className="form-control" id="exampleInputEmail1" placeholder="Enter email" />
                                 <label htmlFor="exampleInputPassword1">Password </label>
                                 <input name='password' onChange={this.handleInputChange} type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
-                            <Link to='/profile' onClick={this.handleFormSubmit}>Sign in</Link>
+                                <Link to='/profile' onClick={this.handleFormSubmit}>
+                                    <Button color="primary">Sign in</Button>
+                                </Link>
                             </div>
                         </form>
                     </Col>
