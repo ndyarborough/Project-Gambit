@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row } from 'reactstrap';
+import { Button, Row } from 'reactstrap';
 import BattleCard from '../../components/BattleCard/BattleCard.jsx';
 import CategorySelect from '../../components/CategorySelect/CategorySelect.jsx';
 import './Search.css';
