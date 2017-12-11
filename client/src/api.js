@@ -15,8 +15,8 @@ const registerUser = (pform, regn, gametg, mail, passwrd, confirmpasswrd) => {
                 confirmpassword: confirmpasswrd
             }).then(function (res) {
                 console.log(res);
-            }).catch(function (error) {
-                console.log(error);
+            }).catch(function (ERR) {
+                console.log(ERR);
             })
         })
         .catch(function (error) {
@@ -27,47 +27,61 @@ const registerUser = (pform, regn, gametg, mail, passwrd, confirmpasswrd) => {
 
 const login = (mail, passwrd) => {
     console.log('login')
-    axios.get(`http://localhost:3001/api/updatestats/${mail}`, {
+    axios.post('http://localhost:3001/api/login', {
+        email: mail,
+        password: passwrd
+    }).then(function (res) {
+        axios.get(`http://localhost:3001/api/updatestats/${mail}`, {
+        })
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+    }).catch(function (err) {
+        console.log(err);
     })
-        .then(function (response) {
-            console.log(response)
-            axios.post('http://localhost:3001/api/login', {
-                email: mail,
-                password: passwrd
-            }).then(function (res) {
-                console.log(res);
-            }).catch(function (err) {
-                console.log(err);
-            })
-        })
-        .catch(function (error) {
-            console.log(error);
-        })
+
+
+
+    // axios.get(`http://localhost:3001/api/updatestats/${mail}`, {
+    // })
+    //     .then(function (response) {
+    //         console.log(response)
+    //         axios.post('http://localhost:3001/api/login', {
+    //             email: mail,
+    //             password: passwrd
+    //         }).then(function (res) {
+    //             console.log(res);
+    //         }).catch(function (err) {
+    //             console.log(err);
+    //         })
+    //     })
+    //     .catch(function (error) {
+    //         console.log(error);
+    //     })
 }
 
 const getUserStats = (email) => {
     console.log('getUserStats')
     axios.get(`/api/getuserstats/${email}`)
-    .then(res => {
-        // console.log(res)
-        const obj = {
-            gamertag: res.data.gamerTag,
-            platform: res.data.platform,
-            icon: res.data.icon,
-            skillRating: res.data.skillRating,
-            tier: res.data.tier,
-            lifetimeStats: {
-                gamesPlayed: res.data.gamesPlayed,
-                wins: res.data.wins,
-                kdr: res.data.kdr,
-                healing: res.data.healing,
-                damage: res.data.healing,
-                eliminations: res.data.eliminations,
-            }
-        };
-        return obj;
-    })        
-    .catch(err => console.log(err));
+        .then(res => {
+            // console.log(res)
+            const obj = {
+                gamertag: res.data.gamerTag,
+                platform: res.data.platform,
+                icon: res.data.icon,
+                skillRating: res.data.skillRating,
+                tier: res.data.tier,
+                lifetimeStats: {
+                    gamesPlayed: res.data.gamesPlayed,
+                    wins: res.data.wins,
+                    kdr: res.data.kdr,
+                    healing: res.data.healing,
+                    damage: res.data.healing,
+                    eliminations: res.data.eliminations,
+                }
+            };
+            return obj;
+        })
+        .catch(err => console.log(err));
 }
 
 const getHeroStats = (userEmail) => {

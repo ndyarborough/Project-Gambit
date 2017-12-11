@@ -1,5 +1,5 @@
 #register {
-    height: 100%;
+    min-height: 100vh;
     background: url('../../imgs/overwatch-bright.jpg');
     background-size: cover;
 }

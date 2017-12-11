@@ -3,11 +3,12 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position:50% 50%;    
-    height: 91.5vh;
-    padding: 8vh 0 0;
+    min-height: 100vh;
+    padding: 0 0;
 }
 
 #welcomeBox {
+    margin-top: 10vh;
     margin-left: 3vw;
     padding: 1vh 0 1vh;
     text-align: center;
@@ -76,11 +77,3 @@
         
     }
 }
-    
-
-@media only screen and (min-width: 1400px) {
-    
-    #home {
-        height: 93vh;
-    }
-    }

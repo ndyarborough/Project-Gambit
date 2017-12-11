@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Col, Row } from 'reactstrap';
+import { Container, Button, Col, Row } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './LoginForm.css';
 import logo from '../../imgs/Project-Gambit-Logo.png';
@@ -24,7 +24,7 @@ class LoginForm extends React.Component {
     };
 
     handleFormSubmit = event => {
-        // event.preventDefault();
+        event.preventDefault();
         if (this.state.email && this.state.password) {
             // Login User
             login(this.state.email, this.state.password);

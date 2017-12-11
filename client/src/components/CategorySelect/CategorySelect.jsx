@@ -18,7 +18,6 @@ class CategorySelect extends React.Component {
                 {
                     this.props.categories.map((item, i) => {
                         return <Button
-                            key={this.props.categories[i]}
                             className={`categories ${this.handleNewCategory(i)}`}
                             id={`${this.props.categories[i].toLowerCase()}-category`}
                             onClick={this.props.handleCategory}

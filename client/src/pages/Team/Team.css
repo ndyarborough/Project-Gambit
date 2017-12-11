@@ -1,5 +1,5 @@
 #teamPage {
-    height: 95vh; /* Navbar takes up remaining height */
+    min-height: 100vh; 
     margin: 0;
     background: url('../../imgs/winston-rage.jpg');
     background-size: cover;
@@ -7,9 +7,9 @@
 }
 
 #team-battle {
-    margin: 0 auto;
+    margin: 3vh auto 0 auto;
     width: 70%;
-    /* max-height: 45vh; */
+    text-align: center;
     background: rgba(0, 0, 0, 0.5);
 }
 

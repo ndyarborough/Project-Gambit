@@ -1,7 +1,8 @@
 import React from 'react';
-import { Col, Button, Row } from 'reactstrap';
+import { Button, Row } from 'reactstrap';
 import BattleCard from '../../components/BattleCard/BattleCard.jsx';
 import CategorySelect from '../../components/CategorySelect/CategorySelect.jsx';
+import Navigation from '../../components/Navigation';
 import './Search.css';
 
 class Search extends React.Component {
@@ -289,6 +290,7 @@ class Search extends React.Component {
 
         return (
             <div id='search'>
+                <Navigation links={['Profile', 'Search', 'Team']} />
                 <CategorySelect
                     currentCategory={this.state.currentCategory}
                     handleCategory={this.handleCategorySelection}

@@ -1,7 +1,6 @@
 //ChatBox.jsx
 import React from "react";
 import io from "socket.io-client";
-import {Col} from 'reactstrap';
 
 class Chat extends React.Component{
     constructor(props){
@@ -28,7 +27,6 @@ class Chat extends React.Component{
         this.sendMessage = ev => {
             ev.preventDefault();
             this.socket.emit('SEND_MESSAGE', {
-                author: this.state.username,
                 message: this.state.message
             })
             this.setState({message: ''});
@@ -49,14 +47,13 @@ class Chat extends React.Component{
                                 <div className="messages">
                                     {this.state.messages.map(message => {
                                         return (
-                                            <div>{message.author}: {message.message}</div>
+                                            <div>{message.message}</div>
                                         )
                                     })}
                                 </div>
 
                             </div>
                             <div className="card-footer">
-                                <input type="text" placeholder="Username" value={this.state.username} onChange={ev => this.setState({username: ev.target.value})} className="form-control"/>
                                 <br/>
                                 <input type="text" placeholder="Message" className="form-control" value={this.state.message} onChange={ev => this.setState({message: ev.target.value})}/>
                                 <br/>

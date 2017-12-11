@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Col, Row, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './RegisterForm.css';
-import { createNewUser } from '../../api';
+import { registerUser } from '../../api';
 
 
 class RegisterForm extends React.Component {
@@ -21,11 +21,10 @@ class RegisterForm extends React.Component {
 
     // Register User
     handleFormSubmit = (event) => {
-        // event.preventDefault();
-        if (this.state.email) {
-            createNewUser(this.state.platform, this.state.region, this.state.gamertag, this.state.email, this.state.password, this.state.confirmPassword);
+        event.preventDefault();
+        if (this.state.email && this.state.platform && this.state.region && this.state.gamertag && this.state.password && this.state.confirmPassword) {
+            registerUser(this.state.platform, this.state.region, this.state.gamertag, this.state.email, this.state.password, this.state.confirmPassword);
         }else {
-            console.log(this.state)
             console.log('Please fill out entire form!');
         }
     }

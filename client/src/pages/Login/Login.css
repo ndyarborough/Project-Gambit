@@ -1,13 +1,9 @@
 #login {
     background: url('../../imgs/discord_bg.jpg');
     background-size: cover;
-    padding: 20vh 0;
-    height: 91.5vh;
+    min-height: 100vh;
 }
 
-@media only screen and (min-width: 1400px) {
-
-#login {
-    height: 93vh;
-}
+#login .container-fluid {
+    margin: 20vh auto;
 }
