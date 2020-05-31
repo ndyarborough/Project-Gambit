@@ -16,16 +16,17 @@ class RegisterForm extends React.Component {
             region: 'global',
             gamertag: '',
             regionOptions: ['Global'],
+            errorMsg: '',
         };
     }
 
     // Register User
     handleFormSubmit = (event) => {
         event.preventDefault();
-        if (this.state.email && this.state.platform && this.state.region && this.state.gamertag && this.state.password && this.state.confirmPassword) {
+        if (this.state.email && this.state.platform && this.state.region && this.state.gamertag.replace(' ', '%20') && this.state.password && this.state.confirmPassword) {
             registerUser(this.state.platform, this.state.region, this.state.gamertag, this.state.email, this.state.password, this.state.confirmPassword);
         }else {
-            console.log('Please fill out entire form!');
+           this.setState({errorMsg: 'Please Fill Out Entire Form!'})
         }
     }
     // Handles updating component state when the user types into the input field
@@ -33,12 +34,7 @@ class RegisterForm extends React.Component {
         const { name, value } = event.target;
         this.setState({
             [name]: value
-        });
-        if (name === 'platform') {
-            console.log('handleRegionChange')
-            console.log(value)
-            this.handleRegionChange(value);            
-        }        
+        });    
     };
 
     // Changing state of region dropdown
@@ -63,6 +59,7 @@ class RegisterForm extends React.Component {
                     <Row>
                         <Col md='12'>
                             <form className="form-horizontal">
+                                <h2 className='err'>{this.state.errorMsg}</h2>
                                 <h2>Register New User</h2>
                                 <hr />
                                 <label htmlFor="email">Email Address</label>
@@ -127,7 +124,7 @@ class RegisterForm extends React.Component {
                                    }
                                 </select>
                                 <br />
-                                <Link to='login' onClick={this.handleFormSubmit}>
+                                <Link to='/login' onClick={this.handleFormSubmit}>
                                     <Button color="primary">Register</Button>
                                 </Link>
                             </form>

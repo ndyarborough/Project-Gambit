@@ -1,11 +1,9 @@
 import axios from 'axios';
 
 const registerUser = (pform, regn, gametg, mail, passwrd, confirmpasswrd) => {
-    console.log('registerUser')
-    axios.get(`http://localhost:3001/api/check/${pform}/${regn}/${gametg}`, {
-    })
+    console.log('registerUser');
+    axios.get(`http://localhost:3001/api/check/${pform}/${regn}/${gametg}`)
         .then(function (response) {
-            console.log(response);
             axios.post('http://localhost:3001/api/register', {
                 platform: pform,
                 region: regn,
@@ -21,7 +19,7 @@ const registerUser = (pform, regn, gametg, mail, passwrd, confirmpasswrd) => {
         })
         .catch(function (error) {
             console.log(error);
-            alert('GamerTag not found. Please Try Again');
+            alert('Error Registering');
         });
 }
 
@@ -38,8 +36,6 @@ const login = (mail, passwrd) => {
     }).catch(function (err) {
         console.log(err);
     })
-
-
 
     // axios.get(`http://localhost:3001/api/updatestats/${mail}`, {
     // })

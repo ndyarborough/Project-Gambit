@@ -50,3 +50,7 @@
     font-size: 1.5rem !important;
     margin: 0 10vw;
 }
+
+.err {
+    color: red;
+}

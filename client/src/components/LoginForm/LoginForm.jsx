@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Button, Col, Row } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import './LoginForm.css';
 import logo from '../../imgs/Project-Gambit-Logo.png';
 import { login } from '../../api';
@@ -28,6 +28,7 @@ class LoginForm extends React.Component {
         if (this.state.email && this.state.password) {
             // Login User
             login(this.state.email, this.state.password);
+            // return <Redirect to="/profile" />
         } else {
             console.log('Please fill out entire form!');
         }
@@ -48,9 +49,9 @@ class LoginForm extends React.Component {
                                 <input name='email' onChange={this.handleInputChange} type="email" className="form-control" id="exampleInputEmail1" placeholder="Enter email" />
                                 <label htmlFor="exampleInputPassword1">Password </label>
                                 <input name='password' onChange={this.handleInputChange} type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
-                                <Link to='/profile' onClick={this.handleFormSubmit}>
-                                    <Button color="primary">Sign in</Button>
-                                </Link>
+                                {/* <Link to='/profile' onClick={this.handleFormSubmit}> */}
+                                    <Button onClick={this.handleFormSubmit} color="primary">Sign in</Button>
+                                {/* </Link> */}
                             </div>
                         </form>
                     </Col>

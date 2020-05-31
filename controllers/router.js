@@ -14,11 +14,9 @@ const Room = require('../models/room.js')
 router.route('/check/:platform/:region/:gamertag').get(function (req, res) {
   request(`https://masteroverwatch.com/profile/${req.params.platform}/${req.params.region}/${req.params.gamertag}`, function (err, response, html) {
     if (err) {
-      console.log(err);
-    } else if (response.statusCode == 404) {
-      console.log('statusCode:', response && response.statusCode);
+      res.send('Gamertag Not Found!');
     } else {
-      res.send('Account Found!');
+      res.send('Gamertag Exists!');
     }
   })
 });
@@ -33,7 +31,7 @@ router.route('/register').post(function (req, res) {
 
   if (errors) {
     //req.session.errors = errors;
-    console.log(errors)
+    res.send(errors);
   } else {
     var userEntry = new User(req.body);
 
@@ -43,20 +41,9 @@ router.route('/register').post(function (req, res) {
       if (err) {
         console.log(err);
       } else {
-        console.log(doc);
+        console.log('USER doc');
         request(`https://masteroverwatch.com/profile/${doc.platform}/${doc.region}/${doc.gamerTag}/season/7`, function (err, response, html) {
           const $ = cheerio.load(html);
-
-          // if ($('ul.player-navigation-extras').children('li.navigation-toggle').children('div:nth-child(1)').children('a').attr('class') == 'toggle-button btn btn-default is-active') {
-          //   console.log('its active')
-          //   app.post('http://masteroverwatch.com/profile/mode/toggle', {
-          //     mode: 'ranked'
-          //   }).then(function(req, res) {
-          //     console.log(posted);
-          //   })
-          // }else {
-          //   console.log('worked');
-          // }
 
           function replaceNan(data) {
             if (isNaN(data)) {
@@ -80,7 +67,8 @@ router.route('/register').post(function (req, res) {
           userResults.damage = replaceNan(parseFloat(lifetimeStats.children('div:nth-child(4)').children('div:nth-child(5)').children('div:nth-child(2)').children().first().text().replace(/,/g, '')));
           userResults.healing = replaceNan(parseFloat(lifetimeStats.children('div:nth-child(4)').children('div:nth-child(7)').children('div:nth-child(2)').children().first().text().replace(/,/g, '')));
           userResults.level = $('div.header-avatar').children('span').text();
-          userResults.skillRating = parseFloat($('div.header-stat').children('strong').text().replace(/,/g, ''));
+          userResults.skillRating = replaceNan(parseFloat($('div.header-stat').children('strong').text().replace(/,/g, '')));
+          console.log(userResults);
 
           User.findOneAndUpdate({
             '_id': doc._id
@@ -119,7 +107,7 @@ router.route('/register').post(function (req, res) {
             heroResults.objKills = replaceNan(parseFloat($(element).children('div:nth-child(3)').children('div:nth-child(2)').children('div:nth-child(1)').children('div:nth-child(1)').text().replace('/min', '')));
             heroResults.objTime = replaceNan(parseFloat($(element).children('div:nth-child(3)').children('div:nth-child(3)').children('div:nth-child(1)').children('div:nth-child(1)').text().replace(' seconds', '')));
 
-            const heroEntry = new Hero(heroResults);
+            var heroEntry = new Hero(heroResults);
 
             heroEntry.save(function (error, docum) {
               if (error) {
@@ -132,11 +120,9 @@ router.route('/register').post(function (req, res) {
                   if (errors) {
                     console.log(errors);
                   } else {
-                    console.log('hohoho')
-                    console.log(docume)
+                    console.log('hero doc')
                   }
                 })
-                //no response
               }
             });
           });
@@ -144,7 +130,6 @@ router.route('/register').post(function (req, res) {
       }
     })
   }
-  res.send('Registered')
 });
 
 //Updates heroes and lifetime stats before every login
@@ -173,11 +158,8 @@ router.route('/updatestats/:email').get(function (req, res) {
           return data;
         }
       }
-
-
       // Scrape Lifetime Stats
       const userResults = {};
-
       const lifetimeStats = $('div.data-overall').children('div:nth-child(2)');
 
       userResults.gamesPlayed = replaceNan(parseFloat(lifetimeStats.children('div:nth-child(2)').children('div:nth-child(1)').children('div:nth-child(2)').children().first().text().replace(/,/g, '')));
@@ -252,8 +234,12 @@ router.route('/updatestats/:email').get(function (req, res) {
 //Logs user into site
 router.route('/login').post(passport.authenticate("local"), function (req, res) {
   // res.json(req.user);
-  // console.log(req.session.cookie);
-  // console.log(req.session);
+  console.log(req.user);
+  // req.login(req.user, (err) => {
+  //   // if(err) return next(err);
+  //   // console.log('farts')
+  //   return res.redirect('/profile')  
+  // });
 });
 
 //Logs out user

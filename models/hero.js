@@ -54,3 +54,5 @@ var HeroSchema = new Schema({
 });
 
 var Hero = mongoose.model("Hero", HeroSchema);
+
+module.exports = Hero;
